@@ -6,11 +6,21 @@ public class ElevatorControl
 {
 	private InterfaceDaPorta interfaceDaPorta;
 	private MotorInterface motorInterface;
+	private int altitudeDoElevador;
+	private ElevatorStatusAndPlan elevatorStatusAndPlan;
+	public static int quantosElevadores = 9;
 	
-	public ElevatorControl()
+	public ElevatorControl(ElevatorStatusAndPlan elevatorStatusAndPlan)
 	{
 		interfaceDaPorta = new InterfaceDaPorta();
-		motorInterface = new MotorInterface();
+		motorInterface = new MotorInterface(this);
+		altitudeDoElevador = 0;
+		for(int i = 0; i < quantosElevadores; i++)
+		{
+			ArrivalSensorInterface sensorDeChegadaNoAndar = new ArrivalSensorInterface(this, i, 10 * i);
+			sensorDeChegadaNoAndar.execute("");
+		}
+		this.elevatorStatusAndPlan = elevatorStatusAndPlan;
 	}
 	
 	public void fazerElevadorSeMecher(String sobeOuDesceOuParado, int andarAtual)
@@ -43,5 +53,21 @@ public class ElevatorControl
 							SingletonInterfaceSubsistemaDeAndares.getInstancia();
 		singletonConheceAndares.desligarVisorSobeDesceNoAndar(andarAtual);
 	}
+
+	public synchronized int getAltitudeDoElevador() {
+		return altitudeDoElevador;
+	}
+
+	public synchronized void setAltitudeDoElevador(int altitudeDoElevador) {
+		this.altitudeDoElevador = altitudeDoElevador;
+	}
+
+	public void elevadorChegouNoAndar(int andarDoSensor) 
+	{
+		boolean precisaPercorrerEsseAndar = this.elevatorStatusAndPlan.andarPrecisaPercorrer(andarDoSensor);
+		
+	}
+	
+	
 
 }
