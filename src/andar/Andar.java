@@ -38,5 +38,10 @@ public class Andar
 	{
 		this.interfaceDirecaoSobeDesceAndar.desligarVisorSobeEDesceDoAndar();
 	}
+	
+	public void ligarVisorDirecaoSobeDesceDoAndar(String sobeDesceOuParado)
+	{
+		this.interfaceDirecaoSobeDesceAndar.ligarVisorSobeEDesceEEmQualDirecao(sobeDesceOuParado);
+	}
 
 }

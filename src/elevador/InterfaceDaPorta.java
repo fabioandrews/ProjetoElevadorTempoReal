@@ -21,4 +21,9 @@ public class InterfaceDaPorta
 	{
 		this.portaEstaFechada = true;
 	}
+	
+	public void abrirPorta()
+	{
+		this.portaEstaFechada = false;
+	}
 }

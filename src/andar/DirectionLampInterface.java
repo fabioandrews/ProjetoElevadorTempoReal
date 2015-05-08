@@ -15,5 +15,11 @@ public class DirectionLampInterface
 	{
 		this.visorSobeDesceDoAndarEstahLigado = false;
 	}
+	
+	public void ligarVisorSobeEDesceEEmQualDirecao(String sobeOuDesceOuParado)
+	{
+		this.sobeOuDesceOuParado = sobeOuDesceOuParado;
+		this.visorSobeDesceDoAndarEstahLigado = true;
+	}
 
 }

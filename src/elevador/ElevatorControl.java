@@ -65,7 +65,39 @@ public class ElevatorControl
 	public void elevadorChegouNoAndar(int andarDoSensor) 
 	{
 		boolean precisaPercorrerEsseAndar = this.elevatorStatusAndPlan.andarPrecisaPercorrer(andarDoSensor);
-		
+		if(precisaPercorrerEsseAndar == true)
+		{
+			
+			String sobeDesceOuParado = elevatorStatusAndPlan.getSobeOuDesceOuParado();
+			
+			//essa task foi criada porque o processo precisava acontecer em paralelo com parar elevador
+			TaskAcenderLampadaAndarSubindoEDescendo taskAcenderLampadaAndarSubindoEDescendo =
+							new TaskAcenderLampadaAndarSubindoEDescendo(andarDoSensor, sobeDesceOuParado);
+			taskAcenderLampadaAndarSubindoEDescendo.execute("");
+			
+			
+			//essa task foi criada porque o processo precisava acontecer em paralelo com parar elevador
+			TaskDesligarLampadaAndarAtual taskDesligarLampadaAndarAtual 
+					= new TaskDesligarLampadaAndarAtual(andarDoSensor, elevatorStatusAndPlan);
+			taskDesligarLampadaAndarAtual.execute("");
+			
+			//agora em paralelo vamos parar o elevador
+			this.motorInterface.pararElevador();
+			
+			this.abrirPortaElevador();
+		}
+	}
+	
+	public void abrirPortaElevador()
+	{
+		this.interfaceDaPorta.abrirPorta();
+	}
+	
+	public void desligarLampadaAndarElevador(int qualAndarDesligar)
+	{
+		TaskDesligarLampadaAndarAtual taskDesligarLampadaAndarAtual 
+						= new TaskDesligarLampadaAndarAtual(qualAndarDesligar, elevatorStatusAndPlan);
+		taskDesligarLampadaAndarAtual.execute("");
 	}
 	
 	
