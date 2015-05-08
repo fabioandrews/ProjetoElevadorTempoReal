@@ -4,6 +4,7 @@ public class Andar
 {
 	private FloorButtonInterface interfaceBotaoAndar;
 	private FloorLampInterface interfaceLampadaAndar;
+	private DirectionLampInterface interfaceDirecaoSobeDesceAndar;
 	private int numeroAndar;
 	
 	public Andar(int numeroAndar)
@@ -11,6 +12,7 @@ public class Andar
 		this.numeroAndar = numeroAndar;
 		this.interfaceBotaoAndar = new FloorButtonInterface();
 		this.interfaceLampadaAndar = new FloorLampInterface();
+		this.interfaceDirecaoSobeDesceAndar = new DirectionLampInterface();
 	}
 	
 	public FloorButtonInterface getInterfaceBotaoAndar() {
@@ -27,9 +29,14 @@ public class Andar
 		this.interfaceLampadaAndar = interfaceLampadaAndar;
 	}
 	
-	public void desligarVisorSubindoEDescendoNoAndar()
+	public void desligarVisorAndarAtual()
 	{
-		this.interfaceLampadaAndar.desligarVisorSubindoEDescendoNoAndar();
+		this.interfaceLampadaAndar.desligarVisorAndarAtual();
+	}
+	
+	public void desligarVisorDirecaoSobeDesceAndar()
+	{
+		this.interfaceDirecaoSobeDesceAndar.desligarVisorSobeEDesceDoAndar();
 	}
 
 }

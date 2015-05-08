@@ -2,17 +2,17 @@ package andar;
 
 public class FloorLampInterface 
 {
-	private boolean visorSubindoEDescendoNoAndarEstahLigado;
-	private String sobeOuDesce; //o que o visor estah mostrando? uma setinha de sobe ou desce?
+	private boolean visorAndarAtualEstahLigado;
+	private int andar; //o que o visor estah mostrando? um numero do andar atual em que ele esta parado
 	
 	public FloorLampInterface()
 	{
-		visorSubindoEDescendoNoAndarEstahLigado = false;
-		sobeOuDesce = "sobe";
+		visorAndarAtualEstahLigado = false;
+		andar = 0;
 	}
 	
-	public void desligarVisorSubindoEDescendoNoAndar()
+	public void desligarVisorAndarAtual()
 	{
-		visorSubindoEDescendoNoAndarEstahLigado = false;
+		visorAndarAtualEstahLigado = false;
 	}
 }

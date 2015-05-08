@@ -29,11 +29,18 @@ public class SingletonInterfaceSubsistemaDeAndares
 	}
 	
 	
-	public void desligarVisorSubindoEDescendoNoAndar(int andar)
+	public void desligarVisorAndarAtualNoAndar(int andar)
 	{
 		Andar andarDesligar = this.andares.get(andar);
-		andarDesligar.desligarVisorSubindoEDescendoNoAndar();
+		andarDesligar.desligarVisorAndarAtual();
 	}
+	
+	public void desligarVisorSobeDesceNoAndar(int andar)
+	{
+		Andar andarDesligar = this.andares.get(andar);
+		andarDesligar.desligarVisorDirecaoSobeDesceAndar();
+	}
+	
 	
 	
 
