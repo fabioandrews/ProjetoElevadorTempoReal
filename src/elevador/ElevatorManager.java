@@ -59,5 +59,12 @@ public class ElevatorManager
 	{
 		return this.andaresPercorrerESobreOuDesce.getSobeOuDesceOuParado();
 	}
+	
+	/*essa funcao ocorre no caso de uso Selecionar destino, apos o ElevatorButtonInterface executar pressionouBotaoDoAndar*/
+	public void agendarAndarApospressionouBotaoDoAndar(int numAndar)
+	{
+		this.adicionarAndarPercorrer(numAndar);
+		
+	}
 
 }
