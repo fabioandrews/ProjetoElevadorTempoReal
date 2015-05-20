@@ -6,14 +6,16 @@ public class ArrivalSensorInterface extends AsyncTask<String,String,Void>
 {
 	protected String result = "";
 	private ElevatorControl elevatorControl;
+	private ElevatorManager elevatorManager;//precisa dele pra atualizar o andar em que o elevador estah.
 	private int andarDoSensor;
 	private int altitudeDoSensor;
 
-	public ArrivalSensorInterface(ElevatorControl elevatorControl, int andarDoSensor, int altitudeDoSensor )
+	public ArrivalSensorInterface(ElevatorControl elevatorControl, int andarDoSensor, int altitudeDoSensor , ElevatorManager elevatorManager)
 	{
 		this.elevatorControl = elevatorControl;
 		this.andarDoSensor = andarDoSensor;
 		this.altitudeDoSensor = altitudeDoSensor;
+		this.elevatorManager = elevatorManager;
 	}
 
 	@Override
@@ -39,6 +41,7 @@ public class ArrivalSensorInterface extends AsyncTask<String,String,Void>
 	@Override
 	protected void onProgressUpdate(String... progress)
 	{
+		this.elevatorManager.setAndarAtual(andarDoSensor);
 		this.elevatorControl.elevadorChegouNoAndar(andarDoSensor);
 	}
 	

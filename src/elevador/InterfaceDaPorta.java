@@ -22,8 +22,9 @@ public class InterfaceDaPorta
 		this.portaEstaFechada = true;
 	}
 	
-	public void abrirPorta()
+	public boolean abrirPorta()
 	{
 		this.portaEstaFechada = false;
+		return this.portaEstaFechada;
 	}
 }
