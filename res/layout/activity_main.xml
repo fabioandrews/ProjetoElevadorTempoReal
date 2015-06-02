@@ -19,6 +19,20 @@
             android:maxHeight="10dp"
             android:maxWidth="10dp"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar8_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar8_1"
+            android:layout_alignRight="@+id/visor_parte_fora_andar8_1"
+            android:layout_alignTop="@+id/visor_parte_fora_andar8_1"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar8_1"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar8_1"
@@ -65,6 +79,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar7_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar7_1"
+            android:layout_alignRight="@+id/visor_parte_fora_andar7_1"
+            android:layout_alignTop="@+id/visor_parte_fora_andar7_1"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar7_1"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar7_1"
@@ -109,6 +137,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar6_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar6_1"
+            android:layout_alignRight="@+id/visor_parte_fora_andar6_1"
+            android:layout_alignTop="@+id/visor_parte_fora_andar6_1"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar6_1"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar6_1"
@@ -153,6 +195,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar5_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar5_1"
+            android:layout_alignRight="@+id/visor_parte_fora_andar5_1"
+            android:layout_alignTop="@+id/visor_parte_fora_andar5_1"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar5_1"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar5_1"
@@ -197,6 +253,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar4_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar4_1"
+            android:layout_alignRight="@+id/visor_parte_fora_andar4_1"
+            android:layout_alignTop="@+id/visor_parte_fora_andar4_1"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar4_1"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar4_1"
@@ -241,6 +311,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar3_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar3_1"
+            android:layout_alignRight="@+id/visor_parte_fora_andar3_1"
+            android:layout_alignTop="@+id/visor_parte_fora_andar3_1"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar3_1"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar3_1"
@@ -285,6 +369,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar2_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar2_1"
+            android:layout_alignRight="@+id/visor_parte_fora_andar2_1"
+            android:layout_alignTop="@+id/visor_parte_fora_andar2_1"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar2_1"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar2_1"
@@ -329,6 +427,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar1_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar1_1"
+            android:layout_alignRight="@+id/visor_parte_fora_andar1_1"
+            android:layout_alignTop="@+id/visor_parte_fora_andar1_1"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar1_1"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar1_1"
@@ -374,6 +486,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar0_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar0_1"
+            android:layout_alignRight="@+id/visor_parte_fora_andar0_1"
+            android:layout_alignTop="@+id/visor_parte_fora_andar0_1"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar0_1"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar0_1"
@@ -424,6 +550,20 @@
             android:maxHeight="10dp"
             android:maxWidth="10dp"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar8_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar8_2"
+            android:layout_alignRight="@+id/visor_parte_fora_andar8_2"
+            android:layout_alignTop="@+id/visor_parte_fora_andar8_2"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar8_2"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar8_2"
@@ -471,6 +611,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar7_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar7_2"
+            android:layout_alignRight="@+id/visor_parte_fora_andar7_2"
+            android:layout_alignTop="@+id/visor_parte_fora_andar7_2"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar7_2"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar7_2"
@@ -516,6 +670,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar6_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar6_2"
+            android:layout_alignRight="@+id/visor_parte_fora_andar6_2"
+            android:layout_alignTop="@+id/visor_parte_fora_andar6_2"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar6_2"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar6_2"
@@ -561,6 +729,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar5_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar5_2"
+            android:layout_alignRight="@+id/visor_parte_fora_andar5_2"
+            android:layout_alignTop="@+id/visor_parte_fora_andar5_2"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar5_2"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar5_2"
@@ -606,6 +788,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar4_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar4_2"
+            android:layout_alignRight="@+id/visor_parte_fora_andar4_2"
+            android:layout_alignTop="@+id/visor_parte_fora_andar4_2"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar4_2"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar4_2"
@@ -651,6 +847,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar3_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar3_2"
+            android:layout_alignRight="@+id/visor_parte_fora_andar3_2"
+            android:layout_alignTop="@+id/visor_parte_fora_andar3_2"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar3_2"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar3_2"
@@ -696,6 +906,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar2_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar2_2"
+            android:layout_alignRight="@+id/visor_parte_fora_andar2_2"
+            android:layout_alignTop="@+id/visor_parte_fora_andar2_2"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar2_2"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar2_2"
@@ -741,6 +965,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar1_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar1_2"
+            android:layout_alignRight="@+id/visor_parte_fora_andar1_2"
+            android:layout_alignTop="@+id/visor_parte_fora_andar1_2"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar1_2"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar1_2"
@@ -787,6 +1025,20 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/visor_elevador_parado" />
+        <TextView
+            android:id="@+id/numero_andar_visor_parte_fora_andar0_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/visor_parte_fora_andar0_2"
+            android:layout_alignRight="@+id/visor_parte_fora_andar0_2"
+            android:layout_alignTop="@+id/visor_parte_fora_andar0_2"
+            android:layout_alignBottom="@+id/visor_parte_fora_andar0_2"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:maxHeight="10dp"
+            android:maxWidth="10dp"
+            android:text="0"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/porta_parte_fora_andar0_2"
