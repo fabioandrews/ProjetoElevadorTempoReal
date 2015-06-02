@@ -1,5 +1,7 @@
 package elevador;
 
+import android.os.AsyncTask;
+
 public class MotorInterface 
 {
 	private boolean elevadorEmMovimento;
@@ -26,7 +28,7 @@ public class MotorInterface
 	{
 		elevadorEmMovimento = true;
 		TaskMovimentaElevador taskMoveElevador = new TaskMovimentaElevador(controleDoElevador, this, "sobe");
-		taskMoveElevador.execute("");
+		taskMoveElevador.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");;
 		
 	}
 	
@@ -34,7 +36,7 @@ public class MotorInterface
 	{
 		elevadorEmMovimento = true;
 		TaskMovimentaElevador taskMoveElevador = new TaskMovimentaElevador(controleDoElevador, this, "desce");
-		taskMoveElevador.execute("");
+		taskMoveElevador.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");;
 		
 	}
 	

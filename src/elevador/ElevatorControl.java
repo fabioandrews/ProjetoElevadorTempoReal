@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.UUID;
 
 import andar.SingletonInterfaceSubsistemaDeAndares;
+import android.os.AsyncTask;
 import android.util.Log;
 
 public class ElevatorControl 
@@ -39,10 +40,10 @@ public class ElevatorControl
 		Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Porta fechando e" + sobeOuDesceOuParado);
 		//os eventos abaixo deveriam ser concorrentes. Por isso as tasks foram criadas
 		TaskFechaPorta taskFechaPorta = new TaskFechaPorta(this, interfaceDaPorta, sobeOuDesceOuParado, andarAtual);
-		taskFechaPorta.execute("");
+		taskFechaPorta.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");
 		
 		TaskDesligarLampadaAndarSubindoEDescendo taskDesligaLampada = new TaskDesligarLampadaAndarSubindoEDescendo(andarAtual);
-		taskDesligaLampada.execute("");	
+		taskDesligaLampada.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");;	
 	}
 	
 	//esse processo soh eh iniciado apos a taskfechaporta terminar de fechar a porta
@@ -92,13 +93,13 @@ public class ElevatorControl
 			//essa task foi criada porque o processo precisava acontecer em paralelo com parar elevador
 			TaskAcenderLampadaAndarSubindoEDescendo taskAcenderLampadaAndarSubindoEDescendo =
 							new TaskAcenderLampadaAndarSubindoEDescendo(andarDoSensor, sobeDesceOuParado);
-			taskAcenderLampadaAndarSubindoEDescendo.execute("");
+			taskAcenderLampadaAndarSubindoEDescendo.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");
 			
 			
 			//essa task foi criada porque o processo precisava acontecer em paralelo com parar elevador
 			TaskDesligarLampadaAndarAtual taskDesligarLampadaAndarAtual 
 					= new TaskDesligarLampadaAndarAtual(andarDoSensor, elevatorStatusAndPlan);
-			taskDesligarLampadaAndarAtual.execute("");
+			taskDesligarLampadaAndarAtual.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");;
 			
 			//agora em paralelo vamos parar o elevador
 			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Elevador muda de movendo para parando");
@@ -118,7 +119,7 @@ public class ElevatorControl
 		{
 			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Elevador no andar");
 			DoorTimer timerDaPorta = new DoorTimer(this);
-			timerDaPorta.execute("");
+			timerDaPorta.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");;
 		}
 	}
 	
@@ -126,7 +127,7 @@ public class ElevatorControl
 	{
 		TaskDesligarLampadaAndarAtual taskDesligarLampadaAndarAtual 
 						= new TaskDesligarLampadaAndarAtual(qualAndarDesligar, elevatorStatusAndPlan);
-		taskDesligarLampadaAndarAtual.execute("");
+		taskDesligarLampadaAndarAtual.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");;
 	}
 	
 	public void checarProximoDestino()
