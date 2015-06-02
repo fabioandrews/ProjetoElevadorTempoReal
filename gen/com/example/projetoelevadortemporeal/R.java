@@ -21,13 +21,37 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int botaocinco=0x7f020000;
+        public static final int botaocinco_aceso=0x7f020001;
+        public static final int botaodois=0x7f020002;
+        public static final int botaodois_aceso=0x7f020003;
+        public static final int botaonove=0x7f020004;
+        public static final int botaonove_aceso=0x7f020005;
+        public static final int botaooito=0x7f020006;
+        public static final int botaooito_aceso=0x7f020007;
+        public static final int botaoquatro=0x7f020008;
+        public static final int botaoquatro_aceso=0x7f020009;
+        public static final int botaoseis=0x7f02000a;
+        public static final int botaoseis_aceso=0x7f02000b;
+        public static final int botaosete=0x7f02000c;
+        public static final int botaosete_aceso=0x7f02000d;
+        public static final int botaotres=0x7f02000e;
+        public static final int botaotres_aceso=0x7f02000f;
+        public static final int botaoum=0x7f020010;
+        public static final int botaoum_aceso=0x7f020011;
+        public static final int botaozero=0x7f020012;
+        public static final int botaozero_aceso=0x7f020013;
+        public static final int fundo_parte_interna_elevador=0x7f020014;
+        public static final int ic_launcher=0x7f020015;
+        public static final int painel_para_botoes_elevador=0x7f020016;
+        public static final int portaelevador=0x7f020017;
     }
     public static final class id {
         public static final int action_settings=0x7f080000;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
+        public static final int activity_so_para_testar_layout_andrews=0x7f030001;
     }
     public static final class menu {
         public static final int main=0x7f070000;
