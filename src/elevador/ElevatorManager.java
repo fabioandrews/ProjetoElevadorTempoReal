@@ -66,5 +66,10 @@ public class ElevatorManager
 		this.adicionarAndarPercorrer(numAndar);
 		
 	}
+	
+	public int getIdElevador()
+	{
+		return this.controleDoElevador.getIdElevador();
+	}
 
 }

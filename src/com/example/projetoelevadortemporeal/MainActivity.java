@@ -7,12 +7,16 @@ import elevador.ArrivalSensorInterface;
 import elevador.ElevatorControl;
 import elevador.ElevatorManager;
 import elevador.ElevatorStatusAndPlan;
+import elevador.ElevatorButtonInterface;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.res.Resources;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 public class MainActivity extends Activity 
 {
@@ -22,6 +26,7 @@ public class MainActivity extends Activity
 	
 	private LinkedList<ElevatorControl> elevatorControls;
 	private LinkedList<ElevatorManager> elevatorManagers;
+	private LinkedList<ElevatorButtonInterface> elevatorButtonInterfaces;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -48,17 +53,21 @@ public class MainActivity extends Activity
 			ElevatorStatusAndPlan umElevatorStatusAndPlan = new ElevatorStatusAndPlan();
 			umElevatorStatusAndPlan.setSobeOuDesceOuParado("parado");
 			
-			ElevatorControl umElevatorControl = new ElevatorControl(umElevatorStatusAndPlan);
+			ElevatorControl umElevatorControl = new ElevatorControl(umElevatorStatusAndPlan, i + 1);
 			this.elevatorControls.add(umElevatorControl);
 			
 			ElevatorManager umElevatorManager = new ElevatorManager(umElevatorStatusAndPlan, umElevatorControl, 0);
 			this.elevatorManagers.add(umElevatorManager);
+			
+			ElevatorButtonInterface umElevatorButtonInterface = new ElevatorButtonInterface(umElevatorManager);
+			this.elevatorButtonInterfaces.add(umElevatorButtonInterface);
 			
 			for(int k = 0; k < quantosAndares; k++)
 			{
 				ArrivalSensorInterface umArrivalSensorInterface = new ArrivalSensorInterface(umElevatorControl, k, k * 10, umElevatorManager);
 				umArrivalSensorInterface.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");
 			}
+			
 			
 			//fim da criação dos elevadores
 		}
@@ -91,9 +100,82 @@ public class MainActivity extends Activity
 			this.elevadoresESeBotoesInternosEstaoApertados.put(elevador, elevadoresDesseAndarEstaoApertados);
 			
 			//REALIZAR PROCEDIMENTO CLICOU BOTAO ANDAR
+			if(v instanceof Button)
+			{
+				Button botaoV = (Button) v;
+				String idDoBotaoComoString = v.getResources().getResourceName(v.getId());
+				int numElevadorAssociado = Integer.valueOf(idDoBotaoComoString.substring(idDoBotaoComoString.length() - 1));
+				String idDoBotaoComoStringSemUltimoDigito = idDoBotaoComoString.substring(0, idDoBotaoComoString.length() - 1);
+				String numAndarPorExtenso = idDoBotaoComoStringSemUltimoDigito.replace("botao", "");
+				String nomeImagemNovaBotao = idDoBotaoComoStringSemUltimoDigito + "_aceso";
+				int idImagemNovaBotao = getResources().getIdentifier(nomeImagemNovaBotao, "drawable", getPackageName());
+				botaoV.setBackgroundResource(idImagemNovaBotao);
+				
+				ElevatorButtonInterface interfaceBotoesDoElevadorChamado = this.elevatorButtonInterfaces.get(numElevadorAssociado - 1); 
+				int numeroAndarSolicitado = 0;
+				if(numAndarPorExtenso.compareTo("zero") == 0)
+				{
+					numeroAndarSolicitado = 0;
+				}
+				else if(numAndarPorExtenso.compareTo("um") == 0)
+				{
+					numeroAndarSolicitado = 1;
+				}
+				else if(numAndarPorExtenso.compareTo("dois") == 0)
+				{
+					numeroAndarSolicitado = 2;
+				}
+				else if(numAndarPorExtenso.compareTo("tres") == 0)
+				{
+					numeroAndarSolicitado = 3;
+				}
+				else if(numAndarPorExtenso.compareTo("quatro") == 0)
+				{
+					numeroAndarSolicitado = 4;
+				}
+				else if(numAndarPorExtenso.compareTo("cinco") == 0)
+				{
+					numeroAndarSolicitado = 5;
+				}
+				else if(numAndarPorExtenso.compareTo("seis") == 0)
+				{
+					numeroAndarSolicitado = 6;
+				}
+				else if(numAndarPorExtenso.compareTo("sete") == 0)
+				{
+					numeroAndarSolicitado = 7;
+				}
+				else if(numAndarPorExtenso.compareTo("oito") == 0)
+				{
+					numeroAndarSolicitado = 8;
+				}
+				interfaceBotoesDoElevadorChamado.pressionouBotaoDoAndar(numeroAndarSolicitado);
+				
+			}
 			
 		}
-		
-		
+	}
+	
+	//metodo chamado pela FachadaInterfaceGrafica assim que o elevador comeca a andar (quem manda requisicao ao Fachada eh o InterfaceDaPorta)
+	public void fecharPortaElevadorEAndar(int andarAtual, int idElevador)
+	{
+		String nomeIdAndarPraFecharPorta = "porta_parte_fora_" + andarAtual + "_" + idElevador;
+		Resources res = getResources();
+		int idPortaAndarPraFechar = res.getIdentifier(nomeIdAndarPraFecharPorta, "id", this.getPackageName());
+		ImageView imageviewPortaAndar = (ImageView) findViewById(idPortaAndarPraFechar);
+		imageviewPortaAndar.setImageResource(R.drawable.portaelevador_maior);
+		//agora, iremos fechar a porta que fica na visao de dentro do elevador
+		String nomeIdPortaDentroElevadorFechar = "porta_dentro_elevador" + idElevador;
+		int idPortaDentroElevadorFechar = res.getIdentifier(nomeIdPortaDentroElevadorFechar, "id", this.getPackageName());
+		ImageView imageviewPortaDentroElevadorFechar = (ImageView) findViewById(idPortaDentroElevadorFechar);
+		imageviewPortaDentroElevadorFechar.setImageResource(R.drawable.portaelevador);
+	}
+	public void desligarVisorSobeDesceDoAndar(int numAndarDesligar, int idElevador)
+	{
+		String nomeIdVisorSobeDescePraDesligar = "visor_parte_fora_andar" + numAndarDesligar + "_" + idElevador;
+		Resources res = getResources();
+		int idVisorSobeDescePraDesligar = res.getIdentifier(nomeIdVisorSobeDescePraDesligar, "id", this.getPackageName());
+		ImageView imageviewVisorSobeDescePraDesligar = (ImageView) findViewById(idVisorSobeDescePraDesligar);
+		imageviewVisorSobeDescePraDesligar.setImageResource(R.drawable.visor_elevador_parado);
 	}
 }

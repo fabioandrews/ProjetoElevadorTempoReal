@@ -17,10 +17,12 @@ public class ElevatorControl
 	private UUID idControleDoElevador;//um ID único para elevatorController
 	private int ultimoAndarQueElevadorParou;//o último andar destino que o elevador parou e abriu porta
 	private String elevadorSobeOuDesceAntesDeParar;//antes de parar, ele subia ou descia?
+	private int idElevador;
 	
 	
-	public ElevatorControl(ElevatorStatusAndPlan elevatorStatusAndPlan)
+	public ElevatorControl(ElevatorStatusAndPlan elevatorStatusAndPlan, int idElevador)
 	{
+		this.idElevador = idElevador;
 		interfaceDaPorta = new InterfaceDaPorta();
 		motorInterface = new MotorInterface(this);
 		altitudeDoElevador = 0;
@@ -35,6 +37,11 @@ public class ElevatorControl
 		this.idControleDoElevador = UUID.randomUUID();
 	}
 	
+	public int getIdElevador()
+	{
+		return this.idElevador;
+	}
+	
 	public void fazerElevadorSeMecher(String sobeOuDesceOuParado, int andarAtual)
 	{	
 		Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Porta fechando e" + sobeOuDesceOuParado);
@@ -42,8 +49,8 @@ public class ElevatorControl
 		TaskFechaPorta taskFechaPorta = new TaskFechaPorta(this, interfaceDaPorta, sobeOuDesceOuParado, andarAtual);
 		taskFechaPorta.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");
 		
-		TaskDesligarLampadaAndarSubindoEDescendo taskDesligaLampada = new TaskDesligarLampadaAndarSubindoEDescendo(andarAtual);
-		taskDesligaLampada.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");;	
+		TaskDesligarLampadaAndarSubindoEDescendo taskDesligaLampada = new TaskDesligarLampadaAndarSubindoEDescendo(andarAtual, this.idElevador);
+		taskDesligaLampada.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");	
 	}
 	
 	//esse processo soh eh iniciado apos a taskfechaporta terminar de fechar a porta
@@ -67,7 +74,7 @@ public class ElevatorControl
 		
 		SingletonInterfaceSubsistemaDeAndares singletonConheceAndares = 
 							SingletonInterfaceSubsistemaDeAndares.getInstancia();
-		singletonConheceAndares.desligarVisorSobeDesceNoAndar(andarAtual);
+		singletonConheceAndares.desligarVisorSobeDesceNoAndar(andarAtual, this.idElevador);
 	}
 
 	public synchronized int getAltitudeDoElevador() {
@@ -98,7 +105,7 @@ public class ElevatorControl
 			
 			//essa task foi criada porque o processo precisava acontecer em paralelo com parar elevador
 			TaskDesligarLampadaAndarAtual taskDesligarLampadaAndarAtual 
-					= new TaskDesligarLampadaAndarAtual(andarDoSensor, elevatorStatusAndPlan);
+					= new TaskDesligarLampadaAndarAtual(andarDoSensor, elevatorStatusAndPlan, this.idElevador);
 			taskDesligarLampadaAndarAtual.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");;
 			
 			//agora em paralelo vamos parar o elevador
@@ -126,7 +133,7 @@ public class ElevatorControl
 	public void desligarLampadaAndarElevador(int qualAndarDesligar)
 	{
 		TaskDesligarLampadaAndarAtual taskDesligarLampadaAndarAtual 
-						= new TaskDesligarLampadaAndarAtual(qualAndarDesligar, elevatorStatusAndPlan);
+						= new TaskDesligarLampadaAndarAtual(qualAndarDesligar, elevatorStatusAndPlan, this.idElevador);
 		taskDesligarLampadaAndarAtual.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");;
 	}
 	

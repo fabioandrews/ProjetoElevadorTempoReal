@@ -22,7 +22,7 @@ public class TaskFechaPorta extends AsyncTask<String,String,String>
 	@Override
 	protected String doInBackground(String... string_qualquer) 
 	{
-		this.interfaceDaPorta.fecharPorta();
+		this.interfaceDaPorta.fecharPorta(andarAtual, this.elevatorControl.getIdElevador());
 		return "";
 	}
 	

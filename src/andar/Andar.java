@@ -29,14 +29,14 @@ public class Andar
 		this.interfaceLampadaAndar = interfaceLampadaAndar;
 	}
 	
-	public void desligarVisorAndarAtual()
+	public void desligarVisorAndarAtual(int idElevador)
 	{
-		this.interfaceLampadaAndar.desligarVisorAndarAtual();
+		this.interfaceLampadaAndar.desligarVisorAndarAtual(numeroAndar, idElevador);
 	}
 	
-	public void desligarVisorDirecaoSobeDesceAndar()
+	public void desligarVisorDirecaoSobeDesceAndar(int idElevador)
 	{
-		this.interfaceDirecaoSobeDesceAndar.desligarVisorSobeEDesceDoAndar();
+		this.interfaceDirecaoSobeDesceAndar.desligarVisorSobeEDesceDoAndar(this.numeroAndar, idElevador);
 	}
 	
 	public void ligarVisorDirecaoSobeDesceDoAndar(String sobeDesceOuParado)

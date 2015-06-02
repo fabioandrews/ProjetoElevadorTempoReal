@@ -1,5 +1,7 @@
 package andar;
 
+import com.example.projetoelevadortemporeal.FachadaInterfaceGrafica;
+
 public class DirectionLampInterface 
 {
 	private String sobeOuDesceOuParado;
@@ -11,9 +13,10 @@ public class DirectionLampInterface
 		this.visorSobeDesceDoAndarEstahLigado = false;
 	}
 	
-	public void desligarVisorSobeEDesceDoAndar()
+	public void desligarVisorSobeEDesceDoAndar(int numAndarDesligar, int idElevador)
 	{
 		this.visorSobeDesceDoAndarEstahLigado = false;
+		FachadaInterfaceGrafica.getInstance().desligarVisorSobeDesceDoAndar(numAndarDesligar, idElevador);
 	}
 	
 	public void ligarVisorSobeEDesceEEmQualDirecao(String sobeOuDesceOuParado)

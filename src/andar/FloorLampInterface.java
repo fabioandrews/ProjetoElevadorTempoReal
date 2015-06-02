@@ -1,5 +1,7 @@
 package andar;
 
+import com.example.projetoelevadortemporeal.FachadaInterfaceGrafica;
+
 public class FloorLampInterface 
 {
 	private boolean visorAndarAtualEstahLigado;
@@ -11,8 +13,9 @@ public class FloorLampInterface
 		andar = 0;
 	}
 	
-	public void desligarVisorAndarAtual()
+	public void desligarVisorAndarAtual(int andarAtual, int idElevador)
 	{
 		visorAndarAtualEstahLigado = false;
+		FachadaInterfaceGrafica.getInstance().desligarVisorAndarAtual(andarAtual, idElevador);
 	}
 }
