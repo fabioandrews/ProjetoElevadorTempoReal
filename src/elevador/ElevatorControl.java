@@ -50,14 +50,17 @@ public class ElevatorControl
 	{
 		if(sobeOuDesceOuParado.compareTo("sobe") == 0)
 		{
+			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Iniciando subida");
 			this.motorInterface.subirElevador();
 		}
 		else if(sobeOuDesceOuParado.compareTo("desce") == 0)
 		{
+			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Iniciando descida");
 			this.motorInterface.descerElevador();
 		}
 		else
 		{
+			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Iniciando parada");
 			this.motorInterface.pararElevador();
 		}
 		
@@ -98,7 +101,10 @@ public class ElevatorControl
 			taskDesligarLampadaAndarAtual.execute("");
 			
 			//agora em paralelo vamos parar o elevador
+			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Elevador muda de movendo para parando");
 			this.motorInterface.pararElevador();
+			
+			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Abrindo porta elevador");
 			
 			this.abrirPortaElevador();
 		}
