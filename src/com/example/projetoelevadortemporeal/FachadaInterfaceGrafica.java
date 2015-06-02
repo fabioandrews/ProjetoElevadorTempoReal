@@ -49,5 +49,10 @@ public class FachadaInterfaceGrafica {
 	{
 		this.activityTelaElevador.pararElevador(andar, idElevador);
 	}
+	
+	public void abrirPortaNaInterfaceEDesligarBotaoDentroElevador(int andarDoSensor, int idElevador)
+	{
+		this.activityTelaElevador.abrirPortaNaInterfaceEDesligarLampadaBotaoDentroElevador(andarDoSensor, idElevador);
+	}
 
 }

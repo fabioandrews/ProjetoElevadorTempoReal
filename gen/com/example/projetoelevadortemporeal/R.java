@@ -62,15 +62,16 @@ public final class R {
         public static final int parte_fora_elevador_com_elevador_movendo_no_andar=0x7f020026;
         public static final int parte_fora_elevador_menor=0x7f020027;
         public static final int portaelevador=0x7f020028;
-        public static final int portaelevador_maior=0x7f020029;
-        public static final int portaelevador_maior_aberta=0x7f02002a;
-        public static final int portaelevador_maior_menor=0x7f02002b;
-        public static final int visor_elevador_descendo=0x7f02002c;
-        public static final int visor_elevador_descendo_menor=0x7f02002d;
-        public static final int visor_elevador_parado=0x7f02002e;
-        public static final int visor_elevador_parado_menor=0x7f02002f;
-        public static final int visor_elevador_subindo=0x7f020030;
-        public static final int visor_elevador_subindo_menor=0x7f020031;
+        public static final int portaelevador_aberta=0x7f020029;
+        public static final int portaelevador_maior=0x7f02002a;
+        public static final int portaelevador_maior_aberta=0x7f02002b;
+        public static final int portaelevador_maior_menor=0x7f02002c;
+        public static final int visor_elevador_descendo=0x7f02002d;
+        public static final int visor_elevador_descendo_menor=0x7f02002e;
+        public static final int visor_elevador_parado=0x7f02002f;
+        public static final int visor_elevador_parado_menor=0x7f020030;
+        public static final int visor_elevador_subindo=0x7f020031;
+        public static final int visor_elevador_subindo_menor=0x7f020032;
     }
     public static final class id {
         public static final int action_settings=0x7f080089;

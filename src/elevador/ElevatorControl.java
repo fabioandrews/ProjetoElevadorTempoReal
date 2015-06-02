@@ -122,14 +122,15 @@ public class ElevatorControl
 			
 			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Abrindo porta elevador");
 			
-			this.abrirPortaElevador();
+			this.abrirPortaElevador(andarDoSensor);
 		}
 	}
 	
-	public void abrirPortaElevador()
+	public void abrirPortaElevador(int andarDoSensor)
 	{
 		
 		boolean portaEstahFechada = this.interfaceDaPorta.abrirPorta();
+		FachadaInterfaceGrafica.getInstance().abrirPortaNaInterfaceEDesligarBotaoDentroElevador(andarDoSensor, this.idElevador);
 		if(portaEstahFechada == false)
 		{
 			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Elevador no andar");

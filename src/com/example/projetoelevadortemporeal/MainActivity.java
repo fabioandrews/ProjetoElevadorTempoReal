@@ -166,7 +166,7 @@ public class MainActivity extends Activity
 	//metodo chamado pela FachadaInterfaceGrafica assim que o elevador comeca a andar (quem manda requisicao ao Fachada eh o InterfaceDaPorta)
 	public void fecharPortaElevadorEAndar(int andarAtual, int idElevador)
 	{
-		String nomeIdAndarPraFecharPorta = "porta_parte_fora_" + andarAtual + "_" + idElevador;
+		String nomeIdAndarPraFecharPorta = "porta_parte_fora_andar" + andarAtual + "_" + idElevador;
 		Resources res = getResources();
 		int idPortaAndarPraFechar = res.getIdentifier(nomeIdAndarPraFecharPorta, "id", this.getPackageName());
 		ImageView imageviewPortaAndar = (ImageView) findViewById(idPortaAndarPraFechar);
@@ -267,5 +267,66 @@ public class MainActivity extends Activity
 		RelativeLayout relativeLayoutUmAndar = (RelativeLayout) findViewById(idRelativeLayoutDeUmAndar);
 		
 		relativeLayoutUmAndar.setBackgroundResource(R.drawable.parte_fora_elevador);
+	}
+	
+	//metodo chamado pela fachada. Eh para assim que o elevador parar, abrir sua porta e desligar o botão de dentro do elevador
+	public void abrirPortaNaInterfaceEDesligarLampadaBotaoDentroElevador(int andarAtual, int idElevador)
+	{
+		String nomeIdAndarPraAbrirPorta = "porta_parte_fora_andar" + andarAtual + "_" + idElevador;
+		Resources res = getResources();
+		int idPortaAndarPraAbrir = res.getIdentifier(nomeIdAndarPraAbrirPorta, "id", this.getPackageName());
+		ImageView imageviewPortaAndar = (ImageView) findViewById(idPortaAndarPraAbrir);
+		imageviewPortaAndar.setImageResource(R.drawable.portaelevador_maior_aberta);
+		//agora, iremos abrir a porta que fica na visao de dentro do elevador
+		String nomeIdPortaDentroElevadorAbrir = "porta_dentro_elevador" + idElevador;
+		int idPortaDentroElevadorAbrir = res.getIdentifier(nomeIdPortaDentroElevadorAbrir, "id", this.getPackageName());
+		ImageView imageviewPortaDentroElevadorAbrir = (ImageView) findViewById(idPortaDentroElevadorAbrir);
+		imageviewPortaDentroElevadorAbrir.setImageResource(R.drawable.portaelevador_aberta);
+		
+		//agora, iremos fechar a porta que fica na visao de dentro do elevador
+		String nomeIdBotaoDesligarDentroElevador = "botao";
+		if(andarAtual  == 0)
+		{
+			nomeIdBotaoDesligarDentroElevador = nomeIdBotaoDesligarDentroElevador + "zero";
+		}
+		else if(andarAtual  == 1)
+		{
+			nomeIdBotaoDesligarDentroElevador = nomeIdBotaoDesligarDentroElevador + "um";
+		}
+		else if(andarAtual  == 2)
+		{
+			nomeIdBotaoDesligarDentroElevador = nomeIdBotaoDesligarDentroElevador + "dois";
+		}
+		else if(andarAtual  == 3)
+		{
+			nomeIdBotaoDesligarDentroElevador = nomeIdBotaoDesligarDentroElevador + "tres";
+		}
+		else if(andarAtual  == 4)
+		{
+			nomeIdBotaoDesligarDentroElevador = nomeIdBotaoDesligarDentroElevador + "quatro";
+		}
+		else if(andarAtual  == 5)
+		{
+			nomeIdBotaoDesligarDentroElevador = nomeIdBotaoDesligarDentroElevador + "cinco";
+		}
+		else if(andarAtual  == 6)
+		{
+			nomeIdBotaoDesligarDentroElevador = nomeIdBotaoDesligarDentroElevador + "seis";
+		}
+		else if(andarAtual  == 7)
+		{
+			nomeIdBotaoDesligarDentroElevador = nomeIdBotaoDesligarDentroElevador + "sete";
+		}
+		else if(andarAtual  == 8)
+		{
+			nomeIdBotaoDesligarDentroElevador = nomeIdBotaoDesligarDentroElevador + "oito";
+		}
+		String nomeParaImaqemBotaoAceso = nomeIdBotaoDesligarDentroElevador;
+		int idImagemNovaBotao = getResources().getIdentifier(nomeParaImaqemBotaoAceso, "drawable", getPackageName());
+		nomeIdBotaoDesligarDentroElevador = nomeIdBotaoDesligarDentroElevador + String.valueOf(idElevador);
+		int idBotaoDesligarDentroElevador = res.getIdentifier(nomeIdBotaoDesligarDentroElevador, "id", this.getPackageName());
+		Button botaoDesligarDentroElevador = (Button) findViewById(idBotaoDesligarDentroElevador);
+		botaoDesligarDentroElevador.setBackgroundResource(idImagemNovaBotao);
+		
 	}
 }
