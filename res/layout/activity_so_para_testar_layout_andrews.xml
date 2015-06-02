@@ -1,8 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+
+    <RelativeLayout android:id="@+id/fundo_elevador1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fundo_parte_interna_elevador"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="200dp">
+        
+        <ImageView 
+                android:id="@+id/porta_dentro_elevador1"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:src="@drawable/portaelevador"
+        		android:layout_centerVertical="true" />
+        
+    	<TableLayout android:id="@+id/painel_botoes_elevador_interno1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/painel_para_botoes_elevador"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/porta_dentro_elevador1"
+        android:layout_centerVertical="true">
+        <TableRow android:gravity="center">
+            <Button 
+                android:id="@+id/botaozero1"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaozero"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=1;andar=0" />
+            <Button 
+                android:id="@+id/botaoum1"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaoum"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=1;andar=1" />
+            <Button 
+                android:id="@+id/botaodois1"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaodois"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=1;andar=2" />
+        </TableRow>
+        <TableRow android:gravity="center">
+            <Button
+                android:id="@+id/botaotres1"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaotres"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=1;andar=3" />
+            <Button
+                android:id="@+id/botaoquatro1"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaoquatro"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=1;andar=4" />
+            <Button 
+                android:id="@+id/botaocinco1"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaocinco"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=1;andar=5" />
+        </TableRow>
+        <TableRow android:gravity="center">
+            <Button 
+                android:id="@+id/botaoseis1"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaoseis"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=1;andar=6" />
+            <Button
+                android:id="@+id/botaosete1"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaosete"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=1;andar=7" />
+            <Button 
+                android:id="@+id/botaooito1"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaooito"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=1;andar=8" />
+        </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+    
+    <RelativeLayout android:id="@+id/fundo_elevador2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fundo_parte_interna_elevador"
+        android:layout_below="@+id/fundo_elevador1"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp">
+        
+        <ImageView 
+                android:id="@+id/porta_dentro_elevador2"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:src="@drawable/portaelevador"
+        		android:layout_centerVertical="true" />
+        
+    	<TableLayout android:id="@+id/painel_botoes_elevador_interno2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/painel_para_botoes_elevador"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/porta_dentro_elevador2"
+        android:layout_centerVertical="true">
+        <TableRow android:gravity="center">
+            <Button 
+                android:id="@+id/botaozero2"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaozero"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=2;andar=0" />
+            <Button 
+                android:id="@+id/botaoum2"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaoum"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=2;andar=1" />
+            <Button 
+                android:id="@+id/botaodois2"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaodois"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=2;andar=2" />
+        </TableRow>
+        <TableRow android:gravity="center">
+            <Button 
+                android:id="@+id/botaotres2"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaotres"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=2;andar=3" />
+            <Button
+                android:id="@+id/botaoquatro2"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaoquatro"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=2;andar=4" />
+            <Button
+                android:id="@+id/botaocinco2"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaocinco"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=2;andar=5" />
+        </TableRow>
+        <TableRow android:gravity="center">
+            <Button 
+                android:id="@+id/botaoseis2"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaoseis"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=2;andar=6" />
+            <Button 
+                android:id="@+id/botaosete2"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaosete"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=2;andar=7" />
+            <Button
+                android:id="@+id/botaooito2"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/botaooito"
+        		android:minHeight="0dp"
+				android:minWidth="0dp"
+				android:onClick="apertarBotaoInternoElevador" android:tag="elevador=2;andar=8" />
+        </TableRow>
+        </TableLayout>
+    </RelativeLayout>
     
 
-</LinearLayout>
+</RelativeLayout>

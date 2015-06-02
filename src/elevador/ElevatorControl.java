@@ -19,7 +19,7 @@ public class ElevatorControl
 	private String elevadorSobeOuDesceAntesDeParar;//antes de parar, ele subia ou descia?
 	
 	
-	public ElevatorControl(ElevatorStatusAndPlan elevatorStatusAndPlan, LinkedList<ArrivalSensorInterface> sensoresDosAndares)
+	public ElevatorControl(ElevatorStatusAndPlan elevatorStatusAndPlan)
 	{
 		interfaceDaPorta = new InterfaceDaPorta();
 		motorInterface = new MotorInterface(this);
