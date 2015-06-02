@@ -25,15 +25,17 @@ public class ElevatorManager
 	public int getAndarAtual() {
 		return andarAtual;
 	}
-	public void setAndarAtual(int andarAtual) {
+	public void setAndarAtual(int andarAtual) 
+	{
 		this.andarAtual = andarAtual;
 	}
 	
 	public void adicionarAndarPercorrer(int andar)
 	{
 		this.andaresPercorrerESobreOuDesce.adicionarNovoAndarAPercorrer(andar);
-		String elevadorSobeDesceOuParado = this.andaresPercorrerESobreOuDesce.getSobeOuDesceOuParado();
-		if(elevadorSobeDesceOuParado.compareTo("parado") == 0)
+		boolean elevadorEstahParado = this.andaresPercorrerESobreOuDesce.getElevadorEstahParado();
+		String elevadorSobeDesceOuParado = this.andaresPercorrerESobreOuDesce.getSobeOuDesce();
+		if(elevadorEstahParado == true)
 		{
 			String elevadorSobeOuDesceOuParado = "";
 			if(andarAtual > andar)
@@ -55,9 +57,14 @@ public class ElevatorManager
 		}
 	}
 	
-	public String getSobeOuDesceOuParado()
+	public String getSobeOuDesce()
 	{
-		return this.andaresPercorrerESobreOuDesce.getSobeOuDesceOuParado();
+		return this.andaresPercorrerESobreOuDesce.getSobeOuDesce();
+	}
+	
+	public boolean getElevadorEstahParado()
+	{
+		return this.andaresPercorrerESobreOuDesce.getElevadorEstahParado();
 	}
 	
 	/*essa funcao ocorre no caso de uso Selecionar destino, apos o ElevatorButtonInterface executar pressionouBotaoDoAndar*/

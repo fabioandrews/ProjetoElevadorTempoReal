@@ -48,9 +48,10 @@ public class AgendadorDeElevadores
 			for(int k = 0; k < elevadoresComEssaDiferenca.size(); k++)
 			{
 				ElevatorManager umElevadorCandidato = elevadoresComEssaDiferenca.get(k);
-				String elevadorSobeDesceOuParado = umElevadorCandidato.getSobeOuDesceOuParado();
-				if(elevadorSobeDesceOuParado.compareTo("parado") == 0 
-						|| elevadorSobeDesceOuParado.compareTo(sobeOuDesce) == 0)
+				boolean elevadorEstahParado = umElevadorCandidato.getElevadorEstahParado();
+				String elevadorSobeOuDesce = umElevadorCandidato.getSobeOuDesce();
+				if(elevadorEstahParado == true 
+						|| elevadorSobeOuDesce.compareTo(sobeOuDesce) == 0)
 				{
 					umElevadorCandidato.adicionarAndarPercorrer(andar);
 					return true;

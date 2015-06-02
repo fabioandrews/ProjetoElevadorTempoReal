@@ -8,17 +8,19 @@ public class TaskAcenderLampadaAndarSubindoEDescendo extends AsyncTask<String,St
 {
 	private int andarAtual;
 	private String sobeOuDesceOuParado;
+	private int idElevador;
 
-	public TaskAcenderLampadaAndarSubindoEDescendo(int andarAtual, String sobeOuDesceOuParado)
+	public TaskAcenderLampadaAndarSubindoEDescendo(int andarAtual, String sobeOuDesceOuParado, int idElevador)
 	{
 		this.andarAtual = andarAtual;
 		this.sobeOuDesceOuParado = sobeOuDesceOuParado;
+		this.idElevador = idElevador;
 	}
 
 	@Override
 	protected String doInBackground(String... string_qualquer) 
 	{
-		SingletonInterfaceSubsistemaDeAndares.getInstancia().ligarVisorSobeEDesceEEmQualDirecao(andarAtual, this.sobeOuDesceOuParado);
+		SingletonInterfaceSubsistemaDeAndares.getInstancia().ligarVisorSobeEDesceEEmQualDirecao(andarAtual, this.sobeOuDesceOuParado,this.idElevador);
 		return "";
 	}
 	

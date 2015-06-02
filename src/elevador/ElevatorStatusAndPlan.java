@@ -4,7 +4,8 @@ import java.util.LinkedList;
 
 public class ElevatorStatusAndPlan 
 {
-	private String sobeOuDesceOuParado; //valores: sobe ou desce ou parado
+	private String sobeOuDesce; //valores: sobe ou desce ou parado
+	private boolean elevadorEstahParado;
 	private LinkedList<Integer> andaresAPercorrer;
 	
 	
@@ -58,12 +59,26 @@ public class ElevatorStatusAndPlan
 		}
 	}
 
-	public String getSobeOuDesceOuParado() {
-		return sobeOuDesceOuParado;
+	public String getSobeOuDesce() {
+		return sobeOuDesce;
+	}
+	
+	public boolean getElevadorEstahParado()
+	{
+		return this.elevadorEstahParado;
 	}
 
-	public void setSobeOuDesceOuParado(String sobeOuDesceOuParado) {
-		this.sobeOuDesceOuParado = sobeOuDesceOuParado;
+	public void setSobeOuDesceOuParado(String sobeOuDesceOuParado) 
+	{
+		if(sobeOuDesceOuParado.compareTo("parado") == 0)
+		{
+			this.elevadorEstahParado = true;
+		}
+		else
+		{
+			this.sobeOuDesce = sobeOuDesceOuParado;
+			this.elevadorEstahParado =false;
+		}
 	}
 	
 	public boolean removerAndarAPercorrer(int numAndar)

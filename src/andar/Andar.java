@@ -39,9 +39,9 @@ public class Andar
 		this.interfaceDirecaoSobeDesceAndar.desligarVisorSobeEDesceDoAndar(this.numeroAndar, idElevador);
 	}
 	
-	public void ligarVisorDirecaoSobeDesceDoAndar(String sobeDesceOuParado)
+	public void ligarVisorDirecaoSobeDesceDoAndar(String sobeDesceOuParado, int numAndarLigar, int idElevador)
 	{
-		this.interfaceDirecaoSobeDesceAndar.ligarVisorSobeEDesceEEmQualDirecao(sobeDesceOuParado);
+		this.interfaceDirecaoSobeDesceAndar.ligarVisorSobeEDesceEEmQualDirecao(sobeDesceOuParado,numAndarLigar, idElevador);
 	}
 
 }

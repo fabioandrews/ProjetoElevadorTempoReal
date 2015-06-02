@@ -3,6 +3,8 @@ package elevador;
 import java.util.LinkedList;
 import java.util.UUID;
 
+import com.example.projetoelevadortemporeal.FachadaInterfaceGrafica;
+
 import andar.SingletonInterfaceSubsistemaDeAndares;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -87,19 +89,23 @@ public class ElevatorControl
 
 	public void elevadorChegouNoAndar(int andarDoSensor) 
 	{
+		//primeiro, precisamos alterar na interface grafica que um elevador chegou num determinado andar, seja ele para parar ou nao
+		String elevadorSobeOuDesce = this.elevatorStatusAndPlan.getSobeOuDesce();
+		FachadaInterfaceGrafica.getInstance().atualizarInterfaceElevadorChegouNumAndar(andarDoSensor,idElevador,elevadorSobeOuDesce);
+		
 		boolean precisaPercorrerEsseAndar = this.elevatorStatusAndPlan.andarPrecisaPercorrer(andarDoSensor);
 		if(precisaPercorrerEsseAndar == true)
 		{
 			
 			this.elevatorStatusAndPlan.removerAndarAPercorrer(andarDoSensor);//chegamos num andar que precisa percorrer, logo remove ele da lista de andares pra percorrer
 			this.ultimoAndarQueElevadorParou = andarDoSensor;
-			this.elevadorSobeOuDesceAntesDeParar = this.elevatorStatusAndPlan.getSobeOuDesceOuParado();
+			this.elevadorSobeOuDesceAntesDeParar = this.elevatorStatusAndPlan.getSobeOuDesce();
 			
-			String sobeDesceOuParado = elevatorStatusAndPlan.getSobeOuDesceOuParado();
+			String sobeDesceOuParado = elevatorStatusAndPlan.getSobeOuDesce();
 			
 			//essa task foi criada porque o processo precisava acontecer em paralelo com parar elevador
 			TaskAcenderLampadaAndarSubindoEDescendo taskAcenderLampadaAndarSubindoEDescendo =
-							new TaskAcenderLampadaAndarSubindoEDescendo(andarDoSensor, sobeDesceOuParado);
+							new TaskAcenderLampadaAndarSubindoEDescendo(andarDoSensor, sobeDesceOuParado,this.idElevador);
 			taskAcenderLampadaAndarSubindoEDescendo.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");
 			
 			
@@ -111,6 +117,8 @@ public class ElevatorControl
 			//agora em paralelo vamos parar o elevador
 			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Elevador muda de movendo para parando");
 			this.motorInterface.pararElevador();
+			
+			FachadaInterfaceGrafica.getInstance().pararElevador(andarDoSensor, this.idElevador);
 			
 			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Abrindo porta elevador");
 			
@@ -162,6 +170,12 @@ public class ElevatorControl
 		}
 	}
 	
+	
+	//funcao chamada so para uma porta ser aberta sem timer(a interface grafica da MainActivity quem chama)
+	public void abrirPortaDoElevadorInicial()
+	{
+		this.interfaceDaPorta.abrirPorta();
+	}
 	
 
 }

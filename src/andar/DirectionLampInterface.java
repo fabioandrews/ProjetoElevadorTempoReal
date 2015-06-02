@@ -19,10 +19,12 @@ public class DirectionLampInterface
 		FachadaInterfaceGrafica.getInstance().desligarVisorSobeDesceDoAndar(numAndarDesligar, idElevador);
 	}
 	
-	public void ligarVisorSobeEDesceEEmQualDirecao(String sobeOuDesceOuParado)
+	public void ligarVisorSobeEDesceEEmQualDirecao(String sobeOuDesceOuParado,int numAndarLigar, int idElevador)
 	{
 		this.sobeOuDesceOuParado = sobeOuDesceOuParado;
 		this.visorSobeDesceDoAndarEstahLigado = true;
+		
+		FachadaInterfaceGrafica.getInstance().ligarVisorSobeDesceDoAndar(sobeOuDesceOuParado,numAndarLigar, idElevador);
 	}
 
 }

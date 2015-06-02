@@ -41,10 +41,10 @@ public class SingletonInterfaceSubsistemaDeAndares
 		andarDesligar.desligarVisorDirecaoSobeDesceAndar(idElevador);
 	}
 	
-	public void ligarVisorSobeEDesceEEmQualDirecao(int andar, String sobeDesceOuParado)
+	public void ligarVisorSobeEDesceEEmQualDirecao(int andar, String sobeDesceOuParado,int idElevador)
 	{
 		Andar andarLigar = this.andares.get(andar);
-		andarLigar.ligarVisorDirecaoSobeDesceDoAndar(sobeDesceOuParado);
+		andarLigar.ligarVisorDirecaoSobeDesceDoAndar(sobeDesceOuParado,andar,idElevador);
 	}
 	
 	

@@ -8,6 +8,7 @@ import elevador.ElevatorControl;
 import elevador.ElevatorManager;
 import elevador.ElevatorStatusAndPlan;
 import elevador.ElevatorButtonInterface;
+import elevador.InterfaceDaPorta;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class MainActivity extends Activity 
 {
@@ -70,6 +73,10 @@ public class MainActivity extends Activity
 			
 			
 			//fim da criação dos elevadores
+			
+			//comeco de abrir porta elevadores do andar zero
+			this.elevatorControls.get(i).abrirPortaDoElevadorInicial();
+			//fim de abrir porta elevadores andar zero
 		}
 		
 		
@@ -177,5 +184,88 @@ public class MainActivity extends Activity
 		int idVisorSobeDescePraDesligar = res.getIdentifier(nomeIdVisorSobeDescePraDesligar, "id", this.getPackageName());
 		ImageView imageviewVisorSobeDescePraDesligar = (ImageView) findViewById(idVisorSobeDescePraDesligar);
 		imageviewVisorSobeDescePraDesligar.setImageResource(R.drawable.visor_elevador_parado);
+	}
+	
+	//metodo chamado pela FachadaInterfaceGrafica
+	public void atualizarInterfaceElevadorChegouNumAndar(int andar,int idElevador, String elevadorSobeOuDesce)
+	{
+		for(int i = 0; i < this.quantosAndares; i++)
+		{
+			String nomeIdRelativeLayoutDeUmAndar = "parte_fora_andar" + i + "_" + idElevador;
+			Resources res = getResources();
+			int idRelativeLayoutDeUmAndar = res.getIdentifier(nomeIdRelativeLayoutDeUmAndar, "id", this.getPackageName());
+			RelativeLayout relativeLayoutUmAndar = (RelativeLayout) findViewById(idRelativeLayoutDeUmAndar);
+			
+			if(i == andar)
+			{
+				//eh o andar que o elevador acabou de chegar
+				relativeLayoutUmAndar.setBackgroundResource(R.drawable.parte_fora_elevador_com_elevador_movendo_no_andar);
+			}
+			else
+			{
+				relativeLayoutUmAndar.setBackgroundResource(R.drawable.parte_fora_elevador);
+			}
+			
+			//alterar visor do andar atual do elevador 
+			String nomeIdTextViewVisorDeUmAndar = "numero_andar_visor_parte_fora_andar" + i + "_" + idElevador;
+			Resources res2 = getResources();
+			int idTextViewVisorDeUmAndar = res2.getIdentifier(nomeIdTextViewVisorDeUmAndar, "id", this.getPackageName());
+			TextView textViewVisorDeUmAndar = (TextView) findViewById(idTextViewVisorDeUmAndar);
+			textViewVisorDeUmAndar.setText(String.valueOf(andar));
+			
+			//falta alterar o visor do sobe ou desce do elevador
+			String nomeIdImageViewVisorParteForaAndar = "visor_parte_fora_andar" + i + "_" + idElevador;
+			Resources res3 = getResources();
+			int idImageViewVisorParteForaAndar = res3.getIdentifier(nomeIdImageViewVisorParteForaAndar, "id", this.getPackageName());
+			ImageView imageViewVisorParteForaAndar = (ImageView) findViewById(idImageViewVisorParteForaAndar);
+			if(elevadorSobeOuDesce.compareTo("sobe") == 0)
+			{
+				imageViewVisorParteForaAndar.setImageResource(R.drawable.visor_elevador_subindo);
+			}
+			else
+			{
+				
+				imageViewVisorParteForaAndar.setImageResource(R.drawable.visor_elevador_descendo);
+			}
+		}
+	}
+	
+	//funcao chamada pela Fachada, para ligar a direcao. Acontece quando um elevador para num andar
+	public void ligarVisorSobeDesceDoAndar(String sobeOuDesceOuParado,int numAndarLigar, int idElevador)
+	{
+		String nomeIdImageViewVisorParteForaAndar = "visor_parte_fora_andar" + numAndarLigar + "_" + idElevador;
+		Resources res3 = getResources();
+		int idImageViewVisorParteForaAndar = res3.getIdentifier(nomeIdImageViewVisorParteForaAndar, "id", this.getPackageName());
+		ImageView imageViewVisorParteForaAndar = (ImageView) findViewById(idImageViewVisorParteForaAndar);
+		if(sobeOuDesceOuParado.compareTo("sobe") == 0)
+		{
+			imageViewVisorParteForaAndar.setImageResource(R.drawable.visor_elevador_subindo);
+		}
+		else
+		{
+			
+			imageViewVisorParteForaAndar.setImageResource(R.drawable.visor_elevador_descendo);
+		}
+	}
+	
+	//funcao chamada pela Fachada. Acontece quando um elevador parou num andar
+	public void desligarVisorAndarAtual(int andarAtual, int idElevador)
+	{
+		String nomeIdTextViewVisorDeUmAndar = "numero_andar_visor_parte_fora_andar" + andarAtual + "_" + idElevador;
+		Resources res2 = getResources();
+		int idTextViewVisorDeUmAndar = res2.getIdentifier(nomeIdTextViewVisorDeUmAndar, "id", this.getPackageName());
+		TextView textViewVisorDeUmAndar = (TextView) findViewById(idTextViewVisorDeUmAndar);
+		textViewVisorDeUmAndar.setText("");
+	}
+	
+	//metodo chamado pela fachada. Eh para assim que o elevador parar, o backgorund dos elevadores ficar normal
+	public void pararElevador(int andar, int idElevador)
+	{
+		String nomeIdRelativeLayoutDeUmAndar = "parte_fora_andar" + andar + "_" + idElevador;
+		Resources res = getResources();
+		int idRelativeLayoutDeUmAndar = res.getIdentifier(nomeIdRelativeLayoutDeUmAndar, "id", this.getPackageName());
+		RelativeLayout relativeLayoutUmAndar = (RelativeLayout) findViewById(idRelativeLayoutDeUmAndar);
+		
+		relativeLayoutUmAndar.setBackgroundResource(R.drawable.parte_fora_elevador);
 	}
 }

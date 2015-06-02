@@ -508,7 +508,7 @@
             android:layout_below="@+id/visor_parte_fora_andar0_1"
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/portaelevador_maior" />
+            android:src="@drawable/portaelevador_maior_aberta" />
         <ImageView
             android:id="@+id/botao_subir_parte_fora_andar0_1"
             android:layout_width="wrap_content"
@@ -1047,7 +1047,7 @@
             android:layout_below="@+id/visor_parte_fora_andar0_2"
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/portaelevador_maior" />
+            android:src="@drawable/portaelevador_maior_aberta" />
         <ImageView
             android:id="@+id/botao_subir_parte_fora_andar0_2"
             android:layout_width="wrap_content"
