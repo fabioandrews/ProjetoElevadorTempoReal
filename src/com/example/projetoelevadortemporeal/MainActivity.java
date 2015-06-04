@@ -9,8 +9,10 @@ import elevador.ElevatorManager;
 import elevador.ElevatorStatusAndPlan;
 import elevador.ElevatorButtonInterface;
 import elevador.InterfaceDaPorta;
+import escalonador.SingletonInterfaceEscalonador;
 
 import andar.FloorButtonInterface;
+import andar.SingletonInterfaceSubsistemaDeAndares;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -107,6 +109,9 @@ public class MainActivity extends Activity
 			this.elevatorControls.get(i).abrirPortaDoElevadorInicial();
 			//fim de abrir porta elevadores andar zero
 		}
+		
+		SingletonInterfaceEscalonador escalonador = SingletonInterfaceEscalonador.getInstancia();
+		escalonador.setElevatorManagers(elevatorManagers);
 		
 		
 	}
@@ -215,12 +220,14 @@ public class MainActivity extends Activity
 			}
 			
 			String sohONumeroDoAndar = "";
-			int percorredoridDoBotaoSohAndarEElevador = 0;
+			/*int percorredoridDoBotaoSohAndarEElevador = 0;
 			while(idDoBotaoSohAndarEElevador.charAt(percorredoridDoBotaoSohAndarEElevador) == '_')
 			{
 				sohONumeroDoAndar = sohONumeroDoAndar + String.valueOf(idDoBotaoSohAndarEElevador.charAt(percorredoridDoBotaoSohAndarEElevador));
 				percorredoridDoBotaoSohAndarEElevador = percorredoridDoBotaoSohAndarEElevador + 1;
-			}
+			}*/
+			String [] idNumeroDoAndarEElevadorSplitado = idDoBotaoSohAndarEElevador.split("_");
+			sohONumeroDoAndar = idNumeroDoAndarEElevadorSplitado[0];
 			int numeroDoAndarInteiro = Integer.valueOf(sohONumeroDoAndar);
 			this.interfaceBotoesDoAndar.usuarioApertouBotaoCimaOuBaixo(numeroDoAndarInteiro, usuarioSobeOuDesce);
 			

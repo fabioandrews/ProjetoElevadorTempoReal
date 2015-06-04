@@ -12,6 +12,12 @@ public class AgendadorDeElevadores
 {
 	private LinkedList<ElevatorManager> elevadores;
 	
+	public AgendadorDeElevadores(LinkedList<ElevatorManager> elevadores)
+	{
+		this.elevadores = elevadores;
+		System.out.println("pra debugar");
+	}
+	
 	public boolean escolherElevadorParaEnviarParaOAndar(int andar, String sobeOuDesce)
 	{
 		TreeMap<Integer, LinkedList<ElevatorManager>> elevadoresEQuantosAndaresDistanteDoAndarParametro 
