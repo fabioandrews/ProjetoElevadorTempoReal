@@ -41,6 +41,7 @@ public class AgendadorDeElevadores
 		}
 		Set<Integer> chavesHashmapElevadoresEAndares = elevadoresEQuantosAndaresDistanteDoAndarParametro.keySet();
 		Iterator<Integer> iteraSobreDiferencaAndaresEntreElevadores = chavesHashmapElevadoresEAndares.iterator();
+		boolean achouElevadorPraAdicionarAndar = false;
 		while(iteraSobreDiferencaAndaresEntreElevadores.hasNext())
 		{
 			int diferencaDeAndaresDistanteDoParametro = iteraSobreDiferencaAndaresEntreElevadores.next();
@@ -51,12 +52,26 @@ public class AgendadorDeElevadores
 				boolean elevadorEstahParado = umElevadorCandidato.getElevadorEstahParado();
 				String elevadorSobeOuDesce = umElevadorCandidato.getSobeOuDesce();
 				if(elevadorEstahParado == true 
-						|| elevadorSobeOuDesce.compareTo(sobeOuDesce) == 0)
+						|| (elevadorSobeOuDesce.compareTo(sobeOuDesce) == 0 && 
+								(sobeOuDesce.compareTo("sobe") == 0 && umElevadorCandidato.getAndarAtual() < andar) ||
+								(sobeOuDesce.compareTo("desce") == 0 && umElevadorCandidato.getAndarAtual() > andar))
+						)
 				{
+					achouElevadorPraAdicionarAndar = true;
 					umElevadorCandidato.adicionarAndarPercorrer(andar);
 					return true;
 				}
 			}
+		}
+		if(achouElevadorPraAdicionarAndar == false)
+		{
+			//ainda não achou elevador compatível com o que o usuário solicitou
+			//vamos pegar então o elevador mais próximo do andar solicitado
+			Iterator<Integer> iteraSobreDiferencaAndaresEntreElevadoresRestantes = chavesHashmapElevadoresEAndares.iterator();
+			int chaveDosElevadoresMaisProximos = iteraSobreDiferencaAndaresEntreElevadoresRestantes.next();
+			LinkedList<ElevatorManager> elevadoresMaisProximos = elevadoresEQuantosAndaresDistanteDoAndarParametro.get(chaveDosElevadoresMaisProximos);
+			ElevatorManager elevadorMaisProximo = elevadoresMaisProximos.getFirst();
+			elevadorMaisProximo.adicionarAndarPercorrer(andar);
 		}
 		
 		return false;

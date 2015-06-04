@@ -9,6 +9,12 @@ public class FachadaInterfaceGrafica {
 		
 	}
 	
+
+	public void setActivityTelaElevador(MainActivity activityTelaElevador) {
+		this.activityTelaElevador = activityTelaElevador;
+	}
+
+
 	public static FachadaInterfaceGrafica getInstance()
 	{
 		if(instanciaFachada == null)
@@ -17,6 +23,7 @@ public class FachadaInterfaceGrafica {
 		}
 		return instanciaFachada;
 	}
+	
 	
 	public void fecharPortaElevadorEAndar(int andarAtual, int idElevador)
 	{

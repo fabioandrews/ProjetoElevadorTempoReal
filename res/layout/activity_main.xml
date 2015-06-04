@@ -51,7 +51,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar8_1"
             android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar8_1"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
         
 
     </RelativeLayout>
@@ -111,7 +111,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar7_1"
             android:layout_width="wrap_content"
@@ -120,7 +120,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar7_1"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -169,7 +169,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar6_1"
             android:layout_width="wrap_content"
@@ -178,7 +178,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar6_1"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -227,7 +227,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar5_1"
             android:layout_width="wrap_content"
@@ -236,7 +236,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar5_1"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -285,7 +285,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar4_1"
             android:layout_width="wrap_content"
@@ -294,7 +294,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar4_1"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -343,7 +343,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar3_1"
             android:layout_width="wrap_content"
@@ -352,7 +352,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar3_1"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -401,7 +401,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar2_1"
             android:layout_width="wrap_content"
@@ -410,7 +410,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar2_1"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -459,7 +459,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar1_1"
             android:layout_width="wrap_content"
@@ -468,7 +468,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar1_1"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
         
 
     </RelativeLayout>
@@ -518,7 +518,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar0_1"
             android:layout_width="wrap_content"
@@ -527,7 +527,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar0_1"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
 
     </RelativeLayout>
     
@@ -582,7 +582,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar8_2"
             android:layout_width="wrap_content"
@@ -591,7 +591,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar8_2"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
         
 
     </RelativeLayout>
@@ -643,7 +643,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar7_2"
             android:layout_width="wrap_content"
@@ -652,7 +652,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar7_2"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -702,7 +702,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar6_2"
             android:layout_width="wrap_content"
@@ -711,7 +711,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar6_2"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -761,7 +761,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar5_2"
             android:layout_width="wrap_content"
@@ -770,7 +770,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar5_2"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -820,7 +820,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar4_2"
             android:layout_width="wrap_content"
@@ -829,7 +829,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar4_2"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -879,7 +879,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar3_2"
             android:layout_width="wrap_content"
@@ -888,7 +888,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar3_2"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -938,7 +938,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar2_2"
             android:layout_width="wrap_content"
@@ -947,7 +947,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar2_2"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -997,7 +997,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar1_2"
             android:layout_width="wrap_content"
@@ -1006,7 +1006,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar1_2"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
         
 
     </RelativeLayout>
@@ -1057,7 +1057,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/botao_cima_aceso" />
+            android:src="@drawable/botao_cima_apagado" />
         <ImageView
             android:id="@+id/botao_descer_parte_fora_andar0_2"
             android:layout_width="wrap_content"
@@ -1066,7 +1066,7 @@
             android:layout_below="@+id/botao_subir_parte_fora_andar0_2"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/botao_baixo_aceso" />
+            android:src="@drawable/botao_baixo_apagado" />
 
     </RelativeLayout>
     
@@ -1083,7 +1083,7 @@
                 android:id="@+id/porta_dentro_elevador1"
         		android:layout_width="wrap_content"
         		android:layout_height="wrap_content"
-        		android:src="@drawable/portaelevador"
+        		android:src="@drawable/portaelevador_aberta"
         		android:layout_centerVertical="true" />
         
     	<TableLayout android:id="@+id/painel_botoes_elevador_interno1"
@@ -1186,7 +1186,7 @@
                 android:id="@+id/porta_dentro_elevador2"
         		android:layout_width="wrap_content"
         		android:layout_height="wrap_content"
-        		android:src="@drawable/portaelevador"
+        		android:src="@drawable/portaelevador_aberta"
         		android:layout_centerVertical="true" />
         
     	<TableLayout android:id="@+id/painel_botoes_elevador_interno2"

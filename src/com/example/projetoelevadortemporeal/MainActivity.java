@@ -10,12 +10,14 @@ import elevador.ElevatorStatusAndPlan;
 import elevador.ElevatorButtonInterface;
 import elevador.InterfaceDaPorta;
 
+import andar.FloorButtonInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -30,15 +32,20 @@ public class MainActivity extends Activity
 	private LinkedList<ElevatorControl> elevatorControls;
 	private LinkedList<ElevatorManager> elevatorManagers;
 	private LinkedList<ElevatorButtonInterface> elevatorButtonInterfaces;
+	private FloorButtonInterface interfaceBotoesDoAndar;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		FachadaInterfaceGrafica.getInstance().setActivityTelaElevador(this);
 		
 		this.elevatorControls = new LinkedList<ElevatorControl>();
 		this.elevatorManagers = new LinkedList<ElevatorManager>();
+		this.interfaceBotoesDoAndar = new FloorButtonInterface();
+		this.elevatorButtonInterfaces = new LinkedList<ElevatorButtonInterface>();
+		this.elevadoresESeBotoesInternosEstaoApertados = new HashMap<Integer, LinkedList<Boolean>>();
 		
 		for(int i = 0; i < quantosElevadores; i++)
 		{
@@ -69,6 +76,28 @@ public class MainActivity extends Activity
 			{
 				ArrivalSensorInterface umArrivalSensorInterface = new ArrivalSensorInterface(umElevatorControl, k, k * 10, umElevatorManager);
 				umArrivalSensorInterface.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");
+				int idElevador = i + 1;
+				String nomeIdBotaoCimaDoAndar = "botao_subir_parte_fora_andar" + k + "_" + idElevador;
+				int idBotaoSobe = getResources().getIdentifier(nomeIdBotaoCimaDoAndar, "id", getPackageName());
+				ImageView botaoSobeDoAndar = (ImageView) findViewById(idBotaoSobe);
+				botaoSobeDoAndar.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						apertarBotaoCimaBaixoAndar(v);
+					}
+				});
+				//fazer isso pros botoes de descer tb
+				String nomeIdBotaoDesceDoAndar = "botao_descer_parte_fora_andar" + k + "_" + idElevador;
+				int idBotaoDesce = getResources().getIdentifier(nomeIdBotaoDesceDoAndar, "id", getPackageName());
+				ImageView botaoDesceDoAndar = (ImageView) findViewById(idBotaoDesce);
+				botaoDesceDoAndar.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						apertarBotaoCimaBaixoAndar(v);
+					}
+				});
 			}
 			
 			
@@ -159,6 +188,39 @@ public class MainActivity extends Activity
 				interfaceBotoesDoElevadorChamado.pressionouBotaoDoAndar(numeroAndarSolicitado);
 				
 			}
+			
+		}
+	}
+	public void apertarBotaoCimaBaixoAndar(View v)
+	{
+		if(v instanceof ImageView)
+		{
+			ImageView botaoCimaDesce = (ImageView) v;
+			String idDoBotaoComoString = v.getResources().getResourceName(v.getId());
+			String usuarioSobeOuDesce = "sobe";
+			String idDoBotaoSohAndarEElevador;
+			if(idDoBotaoComoString.contains("subir"))
+			{
+				usuarioSobeOuDesce = "sobe";
+				botaoCimaDesce.setImageResource(R.drawable.botao_cima_aceso);
+				idDoBotaoSohAndarEElevador = idDoBotaoComoString.replace("botao_subir_parte_fora_andar", "");
+			}
+			else
+			{
+				usuarioSobeOuDesce = "desce";
+				botaoCimaDesce.setImageResource(R.drawable.botao_baixo_aceso);
+				idDoBotaoSohAndarEElevador = idDoBotaoComoString.replace("botao_descer_parte_fora_andar", "");
+			}
+			
+			String sohONumeroDoAndar = "";
+			int percorredoridDoBotaoSohAndarEElevador = 0;
+			while(idDoBotaoSohAndarEElevador.charAt(percorredoridDoBotaoSohAndarEElevador) == '_')
+			{
+				sohONumeroDoAndar = sohONumeroDoAndar + String.valueOf(idDoBotaoSohAndarEElevador.charAt(percorredoridDoBotaoSohAndarEElevador));
+				percorredoridDoBotaoSohAndarEElevador = percorredoridDoBotaoSohAndarEElevador + 1;
+			}
+			int numeroDoAndarInteiro = Integer.valueOf(sohONumeroDoAndar);
+			this.interfaceBotoesDoAndar.usuarioApertouBotaoCimaOuBaixo(numeroDoAndarInteiro, usuarioSobeOuDesce);
 			
 		}
 	}
@@ -321,12 +383,29 @@ public class MainActivity extends Activity
 		{
 			nomeIdBotaoDesligarDentroElevador = nomeIdBotaoDesligarDentroElevador + "oito";
 		}
-		String nomeParaImaqemBotaoAceso = nomeIdBotaoDesligarDentroElevador;
-		int idImagemNovaBotao = getResources().getIdentifier(nomeParaImaqemBotaoAceso, "drawable", getPackageName());
+		String nomeParaImaqemBotaoApagado = nomeIdBotaoDesligarDentroElevador;
+		int idImagemNovaBotao = getResources().getIdentifier(nomeParaImaqemBotaoApagado, "drawable", getPackageName());
 		nomeIdBotaoDesligarDentroElevador = nomeIdBotaoDesligarDentroElevador + String.valueOf(idElevador);
 		int idBotaoDesligarDentroElevador = res.getIdentifier(nomeIdBotaoDesligarDentroElevador, "id", this.getPackageName());
 		Button botaoDesligarDentroElevador = (Button) findViewById(idBotaoDesligarDentroElevador);
 		botaoDesligarDentroElevador.setBackgroundResource(idImagemNovaBotao);
+		
+		//vamos agora desligar os botoes sobe/desce do andar que o elevador parou.
+		for(int i = 0; i < quantosElevadores; i++)
+		{
+			int idElevadorDesligarSobeDesce = i + 1; 
+			String nomeIdBotaoSobeDoAndarElevador1 = "botao_subir_parte_fora_andar" + String.valueOf(andarAtual) + "_" + String.valueOf(idElevadorDesligarSobeDesce);
+			int idBotaoSobeDoAndarElevador1 = res.getIdentifier(nomeIdBotaoSobeDoAndarElevador1, "id", this.getPackageName());
+			ImageView imageviewBotaoSobeDoAndarElevador1 = (ImageView) findViewById(idBotaoSobeDoAndarElevador1);
+			imageviewBotaoSobeDoAndarElevador1.setImageResource(R.drawable.botao_cima_apagado);
+			
+			String nomeIdBotaoDesceDoAndarElevador1 = "botao_descer_parte_fora_andar" + String.valueOf(andarAtual) + "_" + String.valueOf(idElevadorDesligarSobeDesce);
+			int idBotaoDesceDoAndarElevador1 = res.getIdentifier(nomeIdBotaoDesceDoAndarElevador1, "id", this.getPackageName());
+			ImageView imageviewBotaoDesceDoAndarElevador1 = (ImageView) findViewById(idBotaoDesceDoAndarElevador1);
+			imageviewBotaoDesceDoAndarElevador1.setImageResource(R.drawable.botao_baixo_apagado);
+		}
+		
+		
 		
 	}
 }

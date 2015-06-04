@@ -4,11 +4,11 @@ import escalonador.SingletonInterfaceEscalonador;
 
 public class FloorButtonInterface 
 {
-	public void usuarioApertouBotaoCimaOuBaixo(int andarQueOUsuarioEstah, String cimaOuBaixo)
+	public void usuarioApertouBotaoCimaOuBaixo(int andarQueOUsuarioEstah, String sobeOuDesce)
 	{
 		SingletonInterfaceEscalonador interfaceEscalonador = 
 							SingletonInterfaceEscalonador.getInstancia();
-		interfaceEscalonador.solicitarQueUmElevadorPareNoAndar(andarQueOUsuarioEstah, cimaOuBaixo);
+		interfaceEscalonador.solicitarQueUmElevadorPareNoAndar(andarQueOUsuarioEstah, sobeOuDesce);
 	}
 
 }

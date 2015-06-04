@@ -8,6 +8,13 @@ public class ElevatorStatusAndPlan
 	private boolean elevadorEstahParado;
 	private LinkedList<Integer> andaresAPercorrer;
 	
+	public ElevatorStatusAndPlan()
+	{
+		elevadorEstahParado = false;
+		sobeOuDesce = "sobe";
+		this.andaresAPercorrer = new LinkedList<Integer>();
+	}
+	
 	
 	public boolean andarPrecisaPercorrer(int numAndar)
 	{
@@ -72,6 +79,7 @@ public class ElevatorStatusAndPlan
 	{
 		if(sobeOuDesceOuParado.compareTo("parado") == 0)
 		{
+			this.sobeOuDesce = "sobe";
 			this.elevadorEstahParado = true;
 		}
 		else
