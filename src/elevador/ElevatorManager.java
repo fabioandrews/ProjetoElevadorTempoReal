@@ -49,10 +49,6 @@ public class ElevatorManager
 			{
 				elevadorSobeOuDesceOuParado = "sobe";
 			}
-			else
-			{
-				elevadorSobeOuDesceOuParado = "parado";
-			}
 			
 			this.andaresPercorrerESobreOuDesce.setSobeOuDesceOuParado(elevadorSobeOuDesceOuParado);
 			this.controleDoElevador.fazerElevadorSeMecher(elevadorSobeOuDesceOuParado,andarAtual);

@@ -69,6 +69,7 @@ public class ElevatorControl
 	//esse processo soh eh iniciado apos a taskfechaporta terminar de fechar a porta
 	public void realizarProcedimentoIniciarMovimento(String sobeOuDesceOuParado, int andarAtual)
 	{
+		this.elevatorStatusAndPlan.setSobeOuDesceOuParado(sobeOuDesceOuParado);
 		if(sobeOuDesceOuParado.compareTo("sobe") == 0)
 		{
 			Log.i("ElevatorControl", "Elevador id=" + idElevador + ";Iniciando subida");
