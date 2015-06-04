@@ -140,6 +140,7 @@ public class MainActivity extends Activity
 			{
 				Button botaoV = (Button) v;
 				String idDoBotaoComoString = v.getResources().getResourceName(v.getId());
+				idDoBotaoComoString = idDoBotaoComoString.replace("com.example.projetoelevadortemporeal:id/", "");
 				int numElevadorAssociado = Integer.valueOf(idDoBotaoComoString.substring(idDoBotaoComoString.length() - 1));
 				String idDoBotaoComoStringSemUltimoDigito = idDoBotaoComoString.substring(0, idDoBotaoComoString.length() - 1);
 				String numAndarPorExtenso = idDoBotaoComoStringSemUltimoDigito.replace("botao", "");
@@ -197,6 +198,7 @@ public class MainActivity extends Activity
 		{
 			ImageView botaoCimaDesce = (ImageView) v;
 			String idDoBotaoComoString = v.getResources().getResourceName(v.getId());
+			idDoBotaoComoString = idDoBotaoComoString.replace("com.example.projetoelevadortemporeal:id/", "");
 			String usuarioSobeOuDesce = "sobe";
 			String idDoBotaoSohAndarEElevador;
 			if(idDoBotaoComoString.contains("subir"))
