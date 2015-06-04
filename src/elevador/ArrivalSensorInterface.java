@@ -1,25 +1,29 @@
 package elevador;
 
+import com.example.projetoelevadortemporeal.MainActivity;
+
 import android.os.AsyncTask;
 
-public class ArrivalSensorInterface extends AsyncTask<String,String,Void>
+public class ArrivalSensorInterface extends Thread
 {
 	protected String result = "";
 	private ElevatorControl elevatorControl;
 	private ElevatorManager elevatorManager;//precisa dele pra atualizar o andar em que o elevador estah.
 	private int andarDoSensor;
 	private int altitudeDoSensor;
+	private MainActivity telaMain;
 
-	public ArrivalSensorInterface(ElevatorControl elevatorControl, int andarDoSensor, int altitudeDoSensor , ElevatorManager elevatorManager)
+	public ArrivalSensorInterface(MainActivity activity, ElevatorControl elevatorControl, int andarDoSensor, int altitudeDoSensor , ElevatorManager elevatorManager)
 	{
 		this.elevatorControl = elevatorControl;
 		this.andarDoSensor = andarDoSensor;
 		this.altitudeDoSensor = altitudeDoSensor;
 		this.elevatorManager = elevatorManager;
+		this.telaMain = activity;
 	}
 
 	@Override
-	protected Void doInBackground(String... string_qualquer) 
+	public void run() 
 	{
 		while(true)
 		{
@@ -28,9 +32,19 @@ public class ArrivalSensorInterface extends AsyncTask<String,String,Void>
 				int altitudeAtualDoElevador = this.elevatorControl.getAltitudeDoElevador(); 
 				if(altitudeAtualDoElevador == altitudeDoSensor)
 				{
-					publishProgress(string_qualquer);//chama OnProgressUpdate que avisa ao elevador que chegou no andar
+					telaMain.runOnUiThread(new Runnable() {
+						
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							elevatorManager.setAndarAtual(andarDoSensor);
+							elevatorControl.elevadorChegouNoAndar(andarDoSensor);
+							
+						}
+					});
+					
 				}
-			} catch (InterruptedException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -38,19 +52,7 @@ public class ArrivalSensorInterface extends AsyncTask<String,String,Void>
 		}
 	}
 	
-	@Override
-	protected void onProgressUpdate(String... progress)
-	{
-		this.elevatorManager.setAndarAtual(andarDoSensor);
-		this.elevatorControl.elevadorChegouNoAndar(andarDoSensor);
-	}
 	
-	
-	@Override
-	protected void onPostExecute(Void v) 
-	{
-		
-	}
 	
 
 	

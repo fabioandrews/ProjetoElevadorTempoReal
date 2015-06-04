@@ -22,6 +22,7 @@ public class SingletonInterfaceEscalonador
 
 	public void setElevatorManagers(LinkedList<ElevatorManager> elevatorManagers) {
 		this.elevatorManagers = elevatorManagers;
+		agendadorDeElevadores.setElevadores(elevatorManagers);
 	}
 
 

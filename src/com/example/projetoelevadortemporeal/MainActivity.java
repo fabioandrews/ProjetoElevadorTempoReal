@@ -65,7 +65,7 @@ public class MainActivity extends Activity
 			ElevatorStatusAndPlan umElevatorStatusAndPlan = new ElevatorStatusAndPlan();
 			umElevatorStatusAndPlan.setSobeOuDesceOuParado("parado");
 			
-			ElevatorControl umElevatorControl = new ElevatorControl(umElevatorStatusAndPlan, i + 1);
+			ElevatorControl umElevatorControl = new ElevatorControl(this, umElevatorStatusAndPlan, i + 1);
 			this.elevatorControls.add(umElevatorControl);
 			
 			ElevatorManager umElevatorManager = new ElevatorManager(umElevatorStatusAndPlan, umElevatorControl, 0);
@@ -76,8 +76,8 @@ public class MainActivity extends Activity
 			
 			for(int k = 0; k < quantosAndares; k++)
 			{
-				ArrivalSensorInterface umArrivalSensorInterface = new ArrivalSensorInterface(umElevatorControl, k, k * 10, umElevatorManager);
-				umArrivalSensorInterface.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");
+				ArrivalSensorInterface umArrivalSensorInterface = new ArrivalSensorInterface(this, umElevatorControl, k, k * 10, umElevatorManager);
+				umArrivalSensorInterface.start();
 				int idElevador = i + 1;
 				String nomeIdBotaoCimaDoAndar = "botao_subir_parte_fora_andar" + k + "_" + idElevador;
 				int idBotaoSobe = getResources().getIdentifier(nomeIdBotaoCimaDoAndar, "id", getPackageName());

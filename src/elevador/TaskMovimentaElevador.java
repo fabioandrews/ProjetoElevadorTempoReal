@@ -34,7 +34,7 @@ public class TaskMovimentaElevador extends AsyncTask<String,String,Void>
 					this.elevatorControl.setAltitudeDoElevador(antigaAltitudeDoElevador - 10);
 				}
 				
-			} catch (InterruptedException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
