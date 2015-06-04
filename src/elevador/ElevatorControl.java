@@ -18,12 +18,11 @@ public class ElevatorControl
 	private int altitudeDoElevador;
 	private ElevatorStatusAndPlan elevatorStatusAndPlan;
 	public static int quantosElevadores = 9;
-	private UUID idControleDoElevador;//um ID único para elevatorController
 	private int ultimoAndarQueElevadorParou;//o último andar destino que o elevador parou e abriu porta
 	private String elevadorSobeOuDesceAntesDeParar;//antes de parar, ele subia ou descia?
 	private int idElevador;
 	private MainActivity telaPrincipal;
-	
+	private volatile boolean elevadorEsperandoTimerPortaAberta;//o elevador ainda está esperando o timer que abre a porta terminar?
 	
 	public ElevatorControl(MainActivity telaPrincipal, ElevatorStatusAndPlan elevatorStatusAndPlan, int idElevador)
 	{
@@ -32,6 +31,7 @@ public class ElevatorControl
 		interfaceDaPorta = new InterfaceDaPorta();
 		motorInterface = new MotorInterface(this);
 		altitudeDoElevador = 0;
+		this.elevadorEsperandoTimerPortaAberta = false;
 		//os sensores foram removidos desse construtor pq agora precisam conhecer o elevatorManager pra atualizar o andar do elevador.
 		
 		/*for(int i = 0; i < quantosElevadores; i++)
@@ -40,9 +40,16 @@ public class ElevatorControl
 			sensorDeChegadaNoAndar.execute("");
 		}*/
 		this.elevatorStatusAndPlan = elevatorStatusAndPlan;
-		this.idControleDoElevador = UUID.randomUUID();
 	}
 	
+	
+	
+	
+
+
+
+
+
 	public int getIdElevador()
 	{
 		return this.idElevador;
@@ -50,7 +57,7 @@ public class ElevatorControl
 	
 	public void fazerElevadorSeMecher(String sobeOuDesceOuParado, int andarAtual)
 	{	
-		Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Porta fechando e" + sobeOuDesceOuParado);
+		Log.i("ElevatorControl", "Elevador id=" + idElevador + ";Porta fechando e" + sobeOuDesceOuParado);
 		//os eventos abaixo deveriam ser concorrentes. Por isso as tasks foram criadas
 		TaskFechaPorta taskFechaPorta = new TaskFechaPorta(this.telaPrincipal, this, interfaceDaPorta, sobeOuDesceOuParado, andarAtual);
 		Status statusThreadRoda = taskFechaPorta.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "").getStatus();
@@ -64,17 +71,17 @@ public class ElevatorControl
 	{
 		if(sobeOuDesceOuParado.compareTo("sobe") == 0)
 		{
-			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Iniciando subida");
+			Log.i("ElevatorControl", "Elevador id=" + idElevador + ";Iniciando subida");
 			this.motorInterface.subirElevador();
 		}
 		else if(sobeOuDesceOuParado.compareTo("desce") == 0)
 		{
-			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Iniciando descida");
+			Log.i("ElevatorControl", "Elevador id=" + idElevador + ";Iniciando descida");
 			this.motorInterface.descerElevador();
 		}
 		else
 		{
-			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Iniciando parada");
+			Log.i("ElevatorControl", "Elevador id=" + idElevador + ";Iniciando parada");
 			this.motorInterface.pararElevador();
 		}
 		
@@ -119,12 +126,12 @@ public class ElevatorControl
 			taskDesligarLampadaAndarAtual.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");;
 			
 			//agora em paralelo vamos parar o elevador
-			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Elevador muda de movendo para parando");
+			Log.i("ElevatorControl", "Elevador id=" + idElevador + ";Elevador muda de movendo para parando");
 			this.motorInterface.pararElevador();
 			
 			FachadaInterfaceGrafica.getInstance().pararElevador(andarDoSensor, this.idElevador);
 			
-			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Abrindo porta elevador");
+			Log.i("ElevatorControl", "Elevador id=" + idElevador + ";Abrindo porta elevador");
 			
 			this.abrirPortaElevador(andarDoSensor);
 		}
@@ -137,10 +144,20 @@ public class ElevatorControl
 		FachadaInterfaceGrafica.getInstance().abrirPortaNaInterfaceEDesligarBotaoDentroElevador(andarDoSensor, this.idElevador);
 		if(portaEstahFechada == false)
 		{
-			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Elevador no andar");
+			Log.i("ElevatorControl", "Elevador id=" + idElevador + ";Elevador no andar");
 			DoorTimer timerDaPorta = new DoorTimer(this);
 			timerDaPorta.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");;
 		}
+	}
+	
+	public synchronized void setElevadorEsperandoTimerPortaAberta(boolean novoValor)
+	{
+		this.elevadorEsperandoTimerPortaAberta = novoValor;
+	}
+	
+	public synchronized boolean getElevadorEsperandoTimerPortaAberta()
+	{
+		return this.elevadorEsperandoTimerPortaAberta;
 	}
 	
 	public void desligarLampadaAndarElevador(int qualAndarDesligar)
@@ -149,16 +166,17 @@ public class ElevatorControl
 						= new TaskDesligarLampadaAndarAtual(this.telaPrincipal, qualAndarDesligar, elevatorStatusAndPlan, this.idElevador);
 		taskDesligarLampadaAndarAtual.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");;
 	}
+
 	
 	public void checarProximoDestino()
 	{
-		Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Checando próximo destino");
+		Log.i("ElevatorControl", "Elevador id=" + idElevador + ";Checando próximo destino");
 		int proximoAndarPercorrer = 
 				elevatorStatusAndPlan.checarProximoDestino(ultimoAndarQueElevadorParou, elevadorSobeOuDesceAntesDeParar);
 		if(proximoAndarPercorrer < 0)
 		{
 			//elevador não tem mais o que percorrer e ficará ocioso
-			Log.i("ElevatorControl", "Elevador id=" + idControleDoElevador + ";Elevador oscioso");
+			Log.i("ElevatorControl", "Elevador id=" + idElevador + ";Elevador oscioso");
 		}
 		else
 		{
@@ -180,6 +198,13 @@ public class ElevatorControl
 	public void abrirPortaDoElevadorInicial()
 	{
 		this.interfaceDaPorta.abrirPorta();
+	}
+	
+	//esse método é chamado apenas pelo DoorTimer
+	public synchronized void pararElevadorNoStatusAndPlan()
+	{
+		Log.i("ElevatorControl", "Elevador id=" + idElevador + ";DoorTimer Chamou pararElevadorNoStatusAndPlan");
+		this.elevatorStatusAndPlan.setSobeOuDesceOuParado("parado");
 	}
 	
 

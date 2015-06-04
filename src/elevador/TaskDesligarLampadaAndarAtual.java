@@ -42,7 +42,6 @@ public class TaskDesligarLampadaAndarAtual extends AsyncTask<String,String,Strin
 			}
 		});
 		
-		this.elevatorStatusAndPlan.setSobeOuDesceOuParado("parado");
 		
 		return "";
 	}

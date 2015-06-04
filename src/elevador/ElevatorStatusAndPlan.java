@@ -1,11 +1,14 @@
 package elevador;
 
+import java.util.Collections;
 import java.util.LinkedList;
+
+import android.util.Log;
 
 public class ElevatorStatusAndPlan 
 {
 	private String sobeOuDesce; //valores: sobe ou desce ou parado
-	private boolean elevadorEstahParado;
+	private volatile boolean elevadorEstahParado;
 	private LinkedList<Integer> andaresAPercorrer;
 	
 	public ElevatorStatusAndPlan()
@@ -38,7 +41,9 @@ public class ElevatorStatusAndPlan
 		if(andarPrecisaPercorrer(numeroAndar) == false)
 		{
 			//o andar eh novo e precisa ser colocado na lista, mas na ordem do menor para o maior
-			this.andaresAPercorrer.add(numeroAndar);
+			andaresAPercorrer.add(numeroAndar);
+			Collections.sort(andaresAPercorrer);
+			/*this.andaresAPercorrer.add(numeroAndar);
 			int menorAndar = this.andaresAPercorrer.getFirst();
 			int posicaoMenorAndar = 0;
 			
@@ -62,7 +67,7 @@ public class ElevatorStatusAndPlan
 			for(int j = 0; j < novoAndaresAPercorrer.size(); j++)
 			{
 				this.andaresAPercorrer.add(novoAndaresAPercorrer.get(j));
-			}
+			}*/
 		}
 	}
 
@@ -70,22 +75,23 @@ public class ElevatorStatusAndPlan
 		return sobeOuDesce;
 	}
 	
-	public boolean getElevadorEstahParado()
+	public synchronized boolean getElevadorEstahParado()
 	{
 		return this.elevadorEstahParado;
 	}
 
-	public void setSobeOuDesceOuParado(String sobeOuDesceOuParado) 
+	public synchronized void setSobeOuDesceOuParado(String sobeOuDesceOuParado) 
 	{
 		if(sobeOuDesceOuParado.compareTo("parado") == 0)
 		{
-			this.sobeOuDesce = "sobe";
 			this.elevadorEstahParado = true;
+			Log.i("ElevatorStatusAndPlan", "Elevador mudou this.elevadorEstahParado=" + elevadorEstahParado);
 		}
 		else
 		{
 			this.sobeOuDesce = sobeOuDesceOuParado;
 			this.elevadorEstahParado =false;
+			Log.i("ElevatorStatusAndPlan", "Elevador mudou this.elevadorEstahParado=" + elevadorEstahParado);
 		}
 	}
 	

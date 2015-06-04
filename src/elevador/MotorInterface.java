@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 
 public class MotorInterface 
 {
-	private boolean elevadorEmMovimento;
+	private volatile boolean elevadorEmMovimento;
 	private ElevatorControl controleDoElevador;
 	
 

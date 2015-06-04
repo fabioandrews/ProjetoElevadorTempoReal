@@ -103,6 +103,7 @@ public class MainActivity extends Activity
 			}
 			
 			
+			
 			//fim da criação dos elevadores
 			
 			//comeco de abrir porta elevadores do andar zero
@@ -398,6 +399,12 @@ public class MainActivity extends Activity
 		int idBotaoDesligarDentroElevador = res.getIdentifier(nomeIdBotaoDesligarDentroElevador, "id", this.getPackageName());
 		Button botaoDesligarDentroElevador = (Button) findViewById(idBotaoDesligarDentroElevador);
 		botaoDesligarDentroElevador.setBackgroundResource(idImagemNovaBotao);
+		
+		//e precisamos alterar o boolean de elevadoresESeBotoesInternosEstaoApertados
+		LinkedList<Boolean> botoesDesseElevadorESeEstaoPressionados =
+				this.elevadoresESeBotoesInternosEstaoApertados.get(idElevador);
+		botoesDesseElevadorESeEstaoPressionados.set(andarAtual, false);
+		this.elevadoresESeBotoesInternosEstaoApertados.put(idElevador, botoesDesseElevadorESeEstaoPressionados);
 		
 		//vamos agora desligar os botoes sobe/desce do andar que o elevador parou.
 		for(int i = 0; i < quantosElevadores; i++)

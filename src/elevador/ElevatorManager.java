@@ -1,5 +1,6 @@
 package elevador;
 
+import android.util.Log;
 import escalonador.SingletonInterfaceEscalonador;
 
 public class ElevatorManager 
@@ -30,13 +31,15 @@ public class ElevatorManager
 		this.andarAtual = andarAtual;
 	}
 	
-	public void adicionarAndarPercorrer(int andar)
+	public synchronized void adicionarAndarPercorrer(int andar)
 	{
 		this.andaresPercorrerESobreOuDesce.adicionarNovoAndarAPercorrer(andar);
 		boolean elevadorEstahParado = this.andaresPercorrerESobreOuDesce.getElevadorEstahParado();
 		String elevadorSobeDesceOuParado = this.andaresPercorrerESobreOuDesce.getSobeOuDesce();
-		if(elevadorEstahParado == true)
+		boolean elevadorEsperandoTimerPortaAberta = this.controleDoElevador.getElevadorEsperandoTimerPortaAberta();
+		if(elevadorEstahParado == true && elevadorEsperandoTimerPortaAberta == false)
 		{
+			Log.i("ElevatorManager", "Elevador id=" + controleDoElevador.getIdElevador() + "; está parado e sem timer");
 			String elevadorSobeOuDesceOuParado = "";
 			if(andarAtual > andar)
 			{
@@ -51,8 +54,8 @@ public class ElevatorManager
 				elevadorSobeOuDesceOuParado = "parado";
 			}
 			
-			this.controleDoElevador.fazerElevadorSeMecher(elevadorSobeOuDesceOuParado,andarAtual);
 			this.andaresPercorrerESobreOuDesce.setSobeOuDesceOuParado(elevadorSobeOuDesceOuParado);
+			this.controleDoElevador.fazerElevadorSeMecher(elevadorSobeOuDesceOuParado,andarAtual);
 			
 		}
 	}
@@ -62,7 +65,7 @@ public class ElevatorManager
 		return this.andaresPercorrerESobreOuDesce.getSobeOuDesce();
 	}
 	
-	public boolean getElevadorEstahParado()
+	public synchronized boolean getElevadorEstahParado()
 	{
 		return this.andaresPercorrerESobreOuDesce.getElevadorEstahParado();
 	}

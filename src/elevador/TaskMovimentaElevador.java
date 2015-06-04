@@ -1,5 +1,7 @@
 package elevador;
 
+import java.util.LinkedList;
+
 import android.os.AsyncTask;
 
 public class TaskMovimentaElevador extends AsyncTask<String,String,Void>
@@ -24,15 +26,21 @@ public class TaskMovimentaElevador extends AsyncTask<String,String,Void>
 		{
 			try {
 				Thread.sleep(1000);
-				int antigaAltitudeDoElevador = elevatorControl.getAltitudeDoElevador();
-				if(sobeOuDesce.compareTo("sobe") == 0)
+				if(this.motorElevador.getElevadorEmMovimento() == true)
 				{
-					this.elevatorControl.setAltitudeDoElevador(antigaAltitudeDoElevador + 10);
+					int antigaAltitudeDoElevador = elevatorControl.getAltitudeDoElevador();
+					if(sobeOuDesce.compareTo("sobe") == 0)
+					{
+						this.elevatorControl.setAltitudeDoElevador(antigaAltitudeDoElevador + 10);
+						
+					}
+					else
+					{
+						this.elevatorControl.setAltitudeDoElevador(antigaAltitudeDoElevador - 10);
+						
+					}
 				}
-				else
-				{
-					this.elevatorControl.setAltitudeDoElevador(antigaAltitudeDoElevador - 10);
-				}
+				
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

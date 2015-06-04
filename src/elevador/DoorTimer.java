@@ -16,9 +16,11 @@ public class DoorTimer extends AsyncTask<String,String,String>
 	@Override
 	protected String doInBackground(String... params) 
 	{
+		this.controleDoElevador.pararElevadorNoStatusAndPlan();
+		this.controleDoElevador.setElevadorEsperandoTimerPortaAberta(true);
 		try {
 			Thread.sleep(timeoutDoorTimer);
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -28,6 +30,7 @@ public class DoorTimer extends AsyncTask<String,String,String>
 	@Override
 	protected void onPostExecute(String v) 
 	{
+		this.controleDoElevador.setElevadorEsperandoTimerPortaAberta(false);
 		this.controleDoElevador.checarProximoDestino();
 	}
 
